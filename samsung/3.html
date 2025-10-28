@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy S25 | Samsung</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #000;
+            line-height: 1.5;
+        }
+        
+        /* Header */
+        header {
+            padding: 15px 30px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 10px 30px;
+            font-size: 12px;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Product Selection */
+        .product-selection {
+            padding: 15px 30px;
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap; /* Added for responsiveness */
+        }
+        
+        .product-selection a {
+            text-decoration: none;
+            color: #000;
+        }
+        
+        .product-selection .active {
+            font-weight: bold;
+        }
+        
+        /* Product Header */
+        .product-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap; /* Added for responsiveness */
+        }
+        
+        .product-actions a {
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 20px 30px;
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Added for responsiveness */
+            gap: 15px; /* Added for spacing on wrap */
+        }
+        
+        .price-info {
+             flex-basis: 50%; /* Allow wrapping */
+             min-width: 300px; /* Prevent over-squishing */
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .discount {
+            color: #e00;
+            margin-left: 10px;
+            font-size: 14px; /* Added */
+        }
+        
+        .delivery {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .delivery input {
+            border: none;
+            outline: none;
+            width: 100px;
+        }
+        
+        /* Main Content Layout */
+        .main-content {
+            display: flex;
+        }
+        
+        /* Left Column - Product Options */
+        .left-column {
+            flex: 3;
+            padding: 20px 30px;
+            border-right: 1px solid #eee;
+        }
+        
+        .option-group {
+            margin-bottom: 30px;
+        }
+        
+        .option-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; /* Added */
+            gap: 10px; /* Added */
+        }
+        
+        .option-title a {
+            font-size: 14px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        .devices {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .device-option {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer; /* Added */
+            font-size: 14px; /* Added */
+        }
+        
+        .device-option.active {
+            border-color: #0066cc;
+            box-shadow: 0 0 5px rgba(0,102,204,0.3); /* Added */
+        }
+        
+        .device-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .device-price {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 13px; /* Added */
+        }
+        
+        .storage-options {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .storage-option {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer; /* Added */
+        }
+        
+        .storage-option.active {
+            border-color: #0066cc;
+            box-shadow: 0 0 5px rgba(0,102,204,0.3); /* Added */
+        }
+        
+        .color-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .color-option {
+            text-align: center;
+            width: 80px;
+            cursor: pointer; /* Added */
+        }
+        
+        .color-sample {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 auto 5px;
+            border: 1px solid #ddd;
+            transition: transform 0.2s; /* Added */
+        }
+
+        .color-option:hover .color-sample { /* Added */
+            transform: scale(1.1);
+        }
+        
+        .color-name {
+            font-size: 12px;
+        }
+        
+        .special-color {
+            color: #0066cc;
+        }
+        
+        /* Right Column - Offers & Product Details */
+        .right-column {
+            flex: 2;
+            padding: 20px 30px;
+            min-width: 300px; /* Added */
+        }
+        
+        .offer-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .offer-title {
+            font-size: 16px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .offer-title a {
+            font-size: 14px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        .offer-details {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .checkbox-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap; /* Added */
+            gap: 10px; /* Added */
+        }
+        
+        .checkbox-option:last-child {
+            border-bottom: none;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px; /* Added */
+        }
+        
+        .price-info {
+            text-align: right;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .sale-price {
+            font-weight: bold;
+        }
+        
+        .savings {
+            color: #e00;
+            font-size: 12px;
+        }
+        
+        .timer {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .timer-title {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .time-unit {
+            text-align: center;
+        }
+        
+        .time-value {
+            background: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            min-width: 30px;
+        }
+        
+        .time-label {
+            font-size: 10px;
+            margin-top: 3px;
+        }
+        
+        /* Product Details */
+        .product-details {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-image {
+            flex: 1;
+            text-align: center;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        /* Added style for the image */
+        .product-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            max-width: 300px; /* Added max-width */
+        }
+
+        .product-code {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .selected-options {
+            margin-bottom: 15px;
+        }
+        
+        .selected-option {
+            margin-bottom: 5px;
+            font-size: 14px; /* Added */
+        }
+        
+        .final-price {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .emi-info {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .buy-button {
+            flex: 2;
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .chat-button {
+            flex: 1;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #f8f8f8;
+            padding: 40px 30px;
+            margin-top: 50px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            flex-wrap: wrap; /* Added */
+        }
+        
+        .footer-column h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-column a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap; /* Added */
+        }
+        
+        .footer-bottom a {
+            color: #666;
+            text-decoration: none;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .left-column {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+
+            .product-details { /* Added */
+                flex-direction: column-reverse;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header { /* Added */
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .devices, .storage-options {
+                flex-direction: column;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+            }
+            
+            .footer-column {
+                width: 50%;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) { /* Added */
+            .nav-links {
+                gap: 10px;
+                font-size: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .product-selection {
+                gap: 10px;
+            }
+            
+            .footer-column {
+                width: 100%;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .price-info {
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">SAMSUNG</div>
+        <div class="nav-links">
+            <a href="#">Shop</a>
+            <a href="#">Product</a>
+            <a href="#">Support</a>
+            <a href="#">Account</a>
+            <a href="#">Sustainability</a>
+        </div>
+    </header>
+    
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        Home > Moblie > Smartphones > Galaxy S25+ | S25 | S25 FE > Buy
+    </div>
+    
+    <!-- Product Selection -->
+    <div class="product-selection">
+        <a href="#" class="active">Galaxy S25+</a>
+        <a href="#">S25</a>
+        <a href="#">S25 FE</a>
+        <a href="./s25.html">Galaxy S25 Ultra</a>
+        <a href="#">Edge</a>
+    </div>
+    
+    <!-- Product Header -->
+    <div class="product-header">
+        <h1 class="product-title">Galaxy S25</h1>
+        <div class="product-actions">
+            <a href="#">Features</a>
+            <a href="#">Compare</a>
+            <a href="#">FAQs</a>
+            <a href="#">Review</a>
+        </div>
+    </div>
+    
+    <!-- Pricing Section -->
+    <div class="pricing">
+        <div class="price-info">
+            <span class="price">₹68,999</span>
+            <span class="original-price">₹74,999</span>
+            <span class="discount">with bank discount across all leading banks</span>
+        </div>
+        <div class="delivery">
+            <span>Delivery Details</span>
+            <input type="text" placeholder="Enter PIN Code">
+        </div>
+    </div>
+    
+    <!-- Timer -->
+    <div class="timer">
+        <div class="timer-title">Limited Time Offer</div>
+        <div class="timer-display">
+            <div class="time-unit">
+                <div class="time-value">01</div>
+                <div class="time-label">DAYS</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value">13</div>
+                <div class="time-label">HOURS</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value">36</div>
+                <div class="time-label">MINS</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value">53</div>
+                <div class="time-label">SECS</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Left Column - Product Options -->
+        <div class="left-column">
+            <!-- Device Selection -->
+            <div class="option-group">
+                <div class="option-title">Device</div>
+                <div class="devices">
+                    <div class="device-option active">
+                        <div class="device-name">Galaxy S25+</div>
+                        <div>16.91 cm display</div>
+                        <div>Galaxy AI++</div>
+                        <div class="device-price">From ₹8,739.03/mo. or ₹99,999.00</div>
+                    </div>
+                    <div class="device-option">
+                        <div class="device-name">Galaxy S25</div>
+                        <div>15.64 cm display</div>
+                        <div>Galaxy AI++</div>
+                        <div class="device-price">From ₹6,554.25/mo. or ₹74,999.00</div>
+                    </div>
+                    <div class="device-option">
+                        <div class="device-name">Galaxy S25 FE</div>
+                        <div>Get 512 GB at the price of 256 GB</div>
+                        <div>Galaxy AI++</div>
+                        <div class="device-price">From ₹5,767.73/mo. or ₹65,999.00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Storage Selection -->
+            <div class="option-group">
+                <div class="option-title">
+                    <span>Storage</span>
+                    <a href="#">How much phone storage is right for you?</a>
+                </div>
+                <div class="storage-options">
+                    <div class="storage-option active">
+                        <div>256 GB | 12GB</div>
+                        <div class="device-price">₹6,554.25/mo. or ₹74,999.00</div>
+                    </div>
+                    <div class="storage-option">
+                        <div>512 GB | 12GB</div>
+                        <div class="device-price">₹7,602.95/mo. or ₹86,999.00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Color Selection -->
+            <div class="option-group">
+                <div class="option-title">Colour</div>
+                <div class="color-options">
+                    <div class="color-option">
+                        <div class="color-sample" style="background-color: #1428a0;"></div>
+                        <div class="color-name">Blueblack</div>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-sample" style="background-color: #ff6b6b;"></div>
+                        <div class="color-name">Coralred</div>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-sample" style="background-color: #ffd700;"></div>
+                        <div class="color-name special-color">Pinkgold</div>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-sample" style="background-color: #000080;"></div>
+                        <div class="color-name">Navy</div>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-sample" style="background-color: #87ceeb;"></div>
+                        <div class="color-name">Icyblue</div>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-sample" style="background-color: #c0c0c0;"></div>
+                        <div class="color-name">Silver</div>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-sample" style="background-color: #98fb98;"></div>
+                        <div class="color-name">Mint</div>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-sample" style="background-color: #483d8b;"></div>
+                        <div class="color-name">Shadow</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column - Offers & Product Details -->
+        <div class="right-column">
+            <!-- Order Info -->
+            <div class="offer-section">
+                <div class="offer-title">
+                    <span>Order by 11 PM and get Next day delivery*</span>
+                </div>
+            </div>
+            
+            <!-- Exchange -->
+            <div class="offer-section">
+                <div class="offer-title">
+                    <span>Exchange</span>
+                    <a href="#">Learn more</a>
+                </div>
+                <div class="offer-details">
+                    Get up to ₹10,000* additional value when you exchange your old device
+                </div>
+                <div class="checkbox-option">
+                    <div class="checkbox-label">
+                        <input type="checkbox" id="exchange" checked>
+                        <label for="exchange">Yes, please</label>
+                    </div>
+                    <div class="price-info">
+                        <div class="savings">Save up to ₹45,000.00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Samsung Care+ -->
+            <div class="offer-section">
+                <div class="offer-title">
+                    <span>Samsung Care+</span>
+                </div>
+                <div class="offer-details">
+                    Protect your device from accidental damage or technical failure
+                </div>
+                <div class="checkbox-option">
+                    <div class="checkbox-label">
+                        <input type="radio" id="care-extended" name="care">
+                        <label for="care-extended">Extended Warranty (1 Year)</label>
+                    </div>
+                    <div class="price-info">
+                        <div class="original-price">₹11,999.00</div>
+                        <div class="sale-price">₹9,999.00</div>
+                        <div class="savings">Save ₹2,000.00</div>
+                    </div>
+                </div>
+                <div class="checkbox-option">
+                    <div class="checkbox-label">
+                        <input type="radio" id="care-comprehensive" name="care">
+                        <label for="care-comprehensive">Comprehensive Protection (2 Years)</label>
+                    </div>
+                    <div class="price-info">
+                        <div class="sale-price">₹6,999.00</div>
+                    </div>
+                </div>
+                <div class="checkbox-option">
+                    <div class="checkbox-label">
+                        <input type="radio" id="care-none" name="care" checked>
+                        <label for="care-none">No, thanks</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Details -->
+            <div class="product-details">
+                <div class="product-info">
+                    <div class="product-code">SM-S931BLGC</div>
+                    <div class="selected-options">
+                        <div class="selected-option">256 GB | 12 GB | Mint</div>
+                    </div>
+                    <div class="final-price">₹6,554.25/mo. or ₹74,999.00</div>
+                    <div class="emi-info">12 month No Cost EMI</div>
+                    <div class="emi-info">Earn up to 2% in rewards</div>
+                    <div class="action-buttons">
+                        <button class="buy-button">Add to Cart</button>
+                        <button class="chat-button">Chat with an expert</button>
+                    </div>
+                </div>
+                <div class="product-image">
+                    <!-- Image tag added as requested -->
+                    <img src="./Galaxy S25 in Mint.jpeg" alt="Galaxy S25 in Mint">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#">Shop Home</a></li>
+                    <li><a href="#">Buy Direct Get More</a></li>
+                    <li><a href="#">SmartThings</a></li>
+                    <li><a href="#">Live Shop</a></li>
+                    <li><a href="#">Samsung Care+</a></li>
+                    <li><a href="#">Discover AI</a></li>
+                    <li><a href="#">Back to school</a></li>
+                    <li><a href="#">Samsung BKC</a></li>
+                    <li><a href="#">Samsung Experience Store</a></li>
+                    <li><a href="#">For Corporate Employees</a></li>
+                    <li><a href="#">Explore</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Product</h3>
+                <ul>
+                    <li><a href="s1">Galaxy Smartphone</a></li>
+                    <li><a href="#">Galaxy Tab</a></li>
+                    <li><a href="#">Galaxy Book (Laptops)</a></li>
+                    <li><a href="#">Galaxy Watch</a></li>
+                    <li><a href="#">Galaxy Buds</a></li>
+                    <li><a href="#">TVs</a></li>
+                    <li><a href="#">Projectors</a></li>
+                    <li><a href="#">Sound Devices</a></li>
+                    <li><a href="#">Refrigerators</a></li>
+                    <li><a href="#">Washing Machines</a></li>
+                    <li><a href="#">Air Conditioners</a></li>
+                    <li><a href="#">Microwave Ovens</a></li>
+                    <li><a href="#">Monitors</a></li>
+                    <li><a href="#">Memory & Storage</a></li>
+                    <li><a href="#">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Support Home</a></li>
+                    <li><a href="#">Manual & Software</a></li>
+                    <li><a href="#">Search Support</a></li>
+                    <li><a href="#">Self-Repair</a></li>
+                    <li><a href="#">Warranty Information</a></li>
+                    <li><a href="#">Service Center</a></li>
+                    <li><a href="#">Track Repair</a></li>
+                    <li><a href="#">Book a Repair</a></li>
+                    <li><a href="#">Out of Warranty Repair Charges</a></li>
+                    <li><a href="#">Spare Part Cost</a></li>
+                    <li><a href="#">WhatsApp</a></li>
+                    <li><a href="#">Digital Service Center</a></li>
+                    <li><a href="#">Chat</a></li>
+                    <li><a href="#">Email the CEO</a></li>
+                    <li><a href="#">Share Your Opinion</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Account</h3>
+                <ul>
+                    <li><a href="#">Why Samsung Account</a></li>
+                    <li><a href="#">Orders</a></li>
+                    <li><a href="#">My Page</a></li>
+                    <li><a href="#">Product Registration</a></li>
+                    <li><a href="#">Vouchers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Sustainability</h3>
+                <ul>
+                    <li><a href="#">Environment</a></li>
+                    <li><a href="#">Security & Privacy</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                    <li><a href="#">Diversity - Equity - Inclusion</a></li>
+                    <li><a href="#">Corporate Citizenship</a></li>
+                    <li><a href="#">Corporate Sustainability</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Company Info</a></li>
+                    <li><a href="#">Business Area</a></li>
+                    <li><a href="#">Brand Identity</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">Newsroom</a></li>
+                    <li><a href="#">Ethics</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-links">
+                <a href="#">Copyright ©1995-2025 SAMSUNG All Rights reserved.</a>
+                <a href="#">Privacy</a>
+                <a href="#">Legal</a>
+                <a href="#">CSR Policy</a>
+                <a href="#">Sitemap</a>
+            </div>
+            <div>
+                Please dispose of e-waste and plastic waste responsibly.
+                For more information or e-waste pick up, please call 1800 5 7267864 or click here for more details.
+            </div>
+            <div style="margin-top: 10px;">
+                Registered Office Address: 6th Floor, DLF Centre, Sansad Marg, New Delhi-110001
+                Corporate Identification Number (CIN): U31900DL1995PTC071387
+            </div>
+            <div style="margin-top: 10px;">
+                India/English
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+

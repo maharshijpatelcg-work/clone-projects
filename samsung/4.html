@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samsung India | Mobile | TV | Home Appliances</title>
+  <style>
+    /* ========== MAIN PAGE STYLES ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+    }
+
+    .navbar div {
+      margin: 5px 10px;
+    }
+
+    .navbar img {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+    }
+
+    #item1 img {
+      width: 110px;
+      height: auto;
+    }
+
+    .navbar p {
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: #333;
+      transition: 0.3s;
+    }
+
+    .navbar p:hover {
+      color: #1428a0;
+    }
+
+    .autodelay1 img {
+      width: 100%;
+    }
+
+    /* ========== SIGNUP POPUP STYLES ========== */
+    .signup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .signup-box {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      position: relative;
+      animation: popup 0.3s ease;
+    }
+
+    @keyframes popup {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .signup-box .logo img {
+      width: 140px;
+      margin-bottom: 15px;
+    }
+
+    .signup-box h2 {
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+      color: #1c1c1c;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 22px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .input-group label {
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      color: #777;
+      font-size: 0.95rem;
+      transition: 0.3s;
+      pointer-events: none;
+    }
+
+    .input-group input:focus {
+      border-color: #1428a0;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:valid + label {
+      top: -8px;
+      left: 10px;
+      font-size: 0.8rem;
+      color: #1428a0;
+      background: #fff;
+      padding: 0 5px;
+    }
+
+    .terms {
+      text-align: left;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .terms a {
+      color: #1428a0;
+      text-decoration: none;
+    }
+
+    .terms a:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #1428a0;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #0f1e7a;
+    }
+
+    .signin-link {
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+
+    .signin-link a {
+      color: #1428a0;
+      text-decoration: none;
+    }
+
+    .signin-link a:hover {
+      text-decoration: underline;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: #666;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #000;
+    }
+
+            html , body {
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'SamsungOne',arial,sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    height: 12vh;
+    display: grid;
+    grid-template-columns: 14% 3.3% 2% 3.8% 4.8% 8.6% 5.9% 4.9% 6.5% 6.6% 15% 4.7% 9% 3.5% 3.5% 3% ;
+    font-size: 11px ;
+    align-items: center;
+}
+
+.navbar > #item1 > img {
+
+    margin-left: 10px;
+    width: 10vw;
+}
+
+.navbar > #item14 > img {
+    width: 2vw;
+}
+
+.navbar > #item15 > img {
+    width: 2vw;
+}
+
+.navbar > #item16 > img {
+    width: 1.5vw;
+}
+
+.autodelay1 {
+    width: 100%;
+    height: 92vh;
+    color: white;
+}
+
+.autodelay1 > img {
+    width: 100%;
+    height: 100%;
+}
+
+.bold {
+    font-size: 37px;
+    font-weight: 550;
+    width: 30vw;
+    height: 37px;
+}
+
+.simple {
+    font-size: smaller;
+    margin-bottom: 100px;
+    width: 30cw;
+    height: 37px;
+    margin-top: -8px;
+    margin-bottom: 0%;
+}
+
+.position {
+    position: absolute;
+    top: 210px;
+    left: 70px;
+}
+
+#sup {
+    font-size: 16px;
+}
+
+.button1 {
+    width: 7vw;
+    font-size: x-small;
+    height: 6vh;
+    border-radius: 20px;
+    border-color: white;
+    margin-top: 10px;
+    font-weight: 550;
+}
+
+.h1 {
+    width: 100%;
+    height: 6vh;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.parent1 {
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+.grid1 {
+    height: 100%;
+    width: 50%;
+    display: grid;
+    font-size: normal;
+    grid-template-columns: 16.5% 16% 12% 22% 21% 18% ;
+}
+
+.flexGrid1 {
+    width: 100%;
+    height: 105vh;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 9px ;
+}
+
+.main1 {
+    width: 48%;
+    height: 100%;
+}
+
+.grid2 {
+    width: 48%;
+    height: 100%;
+}
+
+
+.img1 {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+}
+
+.p1 {
+    width: 15vw;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 550;
+    position: absolute;
+    top: 208%;
+    left: 200px;
+}
+
+.p2 {
+    position: absolute;
+    top: 220%;
+    left: 200px;
+    font-size: small ;
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: repeat(2 , 1fr);
+    grid-template-rows: repeat(2 , 1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+.grid21 {
+    width: 95%;
+    height: 95%;
+    border-radius: 20px;
+}
+
+.grid21 > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.text11 {
+    width: 23% ;
+    font-size: 14px;
+    font-weight: 550;
+    text-align: center;
+    position: absolute;
+    top: 164%;
+}
+
+.text12 {
+    width: 23% ;
+    font-size: 14px;
+    font-weight: 550;
+    text-align: center;
+    position: absolute;
+    top: 216%;
+}
+
+.mobile1 {
+    width: 100%;
+    height: 122vh;
+    background-color: #f3f3f3 ;
+    margin-top: 7vh;
+}
+
+.Zflipimg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.Zflipimg > img {
+    margin-top: 10px;
+    width: 50%;
+}
+
+.mobiletext {
+    font-size: 33px;
+    font-weight: 550;
+    letter-spacing: -1px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.mobgrid {
+    display: grid;
+    grid-template-columns: 19% 19% 19% 19% 21%;
+    width: 55%;
+    margin-top: 9px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.mobgrid > p {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2px ;
+}
+
+.galaxytext1 {
+    font-size: 35px;
+    font-weight: 550;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.galaxysimpletext {
+    width: 100%;
+    text-align: center;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+.lernMore {
+    font-size: 13px;
+    letter-spacing: -0.2px;
+    border-bottom:2px solid black;
+    width: 65px;
+}
+
+.flex1 {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+.buy1 {
+    font-size: 13px;
+    letter-spacing: -0.2px;
+    font-weight: 550;
+    width: 8vw;
+    border-radius: 20px;
+    background-color: black;
+    color: white ;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tvandav {
+    background-color: #bfb9af;
+    margin-top: 0px;
+}
+
+.tvandav > img {
+    width: 100%;
+}
+
+.galaxytext2 {
+    font-size: 45px;
+    font-weight: 550;
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.flex2 {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+
+.buy2 {
+    margin-top: -9px;
+    font-size: 13px;
+    letter-spacing: -0.2px;
+    font-weight: 550;
+    width: 8vw;
+    border-radius: 20px;
+    background-color: black;
+    color: white ;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tvandavsimpletext {
+    width: 100%;
+    text-align: center;
+    opacity: 0.8;
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+
+.tvandavtext2 {
+    font-size: 41px;
+    font-weight: 550;
+    width: 100%;
+    text-align: center;
+    margin-top: -15px;
+}
+
+.tvgrid {
+    display: grid;
+    grid-template-columns: 25% 16% 17% 21% 22%;
+    width: 45%;
+    font-size: 15px;
+    margin-top: 9px;
+}
+
+.tabgrid > p {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2px ;
+}
+
+.tvtext {
+    font-size: 33px;
+    font-weight: 550;
+    letter-spacing: -1px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.WMimg > img {
+    width: 100%;
+}
+
+.WM1 {
+    width: 100%;
+    height: 122vh;
+    background-color: #b8d1d6 ;
+}
+
+.WMtext {
+    font-size: 33px;
+    font-weight: 550;
+    letter-spacing: -1px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.WMgrid {
+    display: grid;
+    grid-template-columns: 21% 26% 24% 23% 22%;
+    width:68%;
+    font-size: 15px;
+    margin-top: 9px;
+}
+
+.galaxytext3 {
+    font-size: 45px;
+    font-weight: 550;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 13px;
+}
+
+.galaxytext3 > sup {
+    font-size: 18px;
+    font-weight: 550;
+}
+
+.recommended {
+    width: 100%;
+    height: 122vh;
+    background-color: white ;
+}
+
+.recommended > h1 {
+    width: 100%;
+    font-size: 40px ;
+    text-align: center;
+    margin-top: 7vh;
+}
+
+.RecommendedMain {
+    width: 100%;
+    height: 88vh;
+    display: flex;
+    column-gap: 3.5vh;
+    justify-content: center;
+}
+
+.product1 {
+    width: 18.3vw;
+    border-radius: 20px;
+    height: 100%;
+    background-color: #f7f7f7;
+}
+
+
+.product2 {
+    width: 18.3vw;
+    border-radius: 20px;
+    height: 100%;
+    background-color: #f7f7f7;
+}
+
+
+.product3 {
+    width: 18.3vw;
+    border-radius: 20px;
+    height: 100%;
+    background-color: #f7f7f7;
+}
+
+
+.product4 {
+    width: 18.3vw;
+    border-radius: 20px;
+    height: 100%;
+    background-color: #f7f7f7;
+}
+
+.RecommendedMain > div > img {
+    width: 83%;
+    height:31vh;
+    margin-top: 7vh;
+    margin-left: 1.4vw;
+}
+
+.buds {
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+    letter-spacing: -1px;
+}
+
+.colour1 {
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+    margin-top: 6vh;
+}
+
+.colourOption {
+    width: 100%;
+    height: 4% ;
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+.colourOption > span {
+    margin-top: 1vh;
+    width: 6%;
+    height: 64%;
+    border-radius: 50%;
+    background-color: white;
+    border : 1px solid black ;
+    margin-top: 0px;
+}
+
+.mrp1 {
+    font-size: 10px;
+    width: 100%;
+    text-align: center;
+    margin-top: 45px;
+}
+
+.mrp2 {
+    font-size: 10px;
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.storage {
+    display: flex;
+    justify-content: center;
+    font-size: 11px;
+    column-gap: 10px;
+}
+
+.storage > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.5vw;
+    height: 3.5vh;
+    border-radius: 20px;
+}
+
+.borderStorage {
+    font-weight: 550;
+    border: 1px solid black;
+}
+
+.b1 {
+    color: #006bea;
+}
+
+.b2 {
+    margin-top: 0px ;
+    font-size: 18px;
+    width: 100%;
+    height: 4vh;
+    text-align: center;
+}
+
+.product1 > a {
+    color: #006bea;
+    font-size: 11px;
+    width: 100%;
+    display: flex; 
+    justify-content: center;
+    height: 3vh;
+    margin-top: -16px; 
+}
+
+.product2 > a {
+    color: #006bea;
+    font-size: 11px;
+    width: 100%;
+    display: flex; 
+    justify-content: center;
+    height: 3vh;
+    margin-top: -16px; 
+}
+
+.product3 > a {
+    color: #006bea;
+    font-size: 11px;
+    width: 100%;
+    display: flex; 
+    justify-content: center;
+    height: 3vh;
+    margin-top: -16px; 
+}
+
+.product4 > a {
+    color: #006bea;
+    font-size: 11px;
+    width: 100%;
+    display: flex; 
+    justify-content: center;
+    height: 3vh;
+    margin-top: -16px; 
+}
+
+.buynow{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 6vh;
+    margin-top: 4vh;
+}
+
+.buynow > a {
+    width: 80%;
+    border-radius: 20px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    color: white ;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 550;
+    justify-content: center;
+}
+
+.lookingsomething {
+    width: 100%;
+    text-align: center;
+}
+
+.lookingsomething > b {
+    width: 100%;
+    font-size: 2.7vw;
+    letter-spacing: -1px;
+}
+
+.seach2 {
+    margin-top: 3vh;
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seach2 > input {
+    height: 80%;
+    width: 30%;
+    border-radius: 20px;
+    border: 0.1px solid black;
+    background-color: #f7f7f7;
+}
+
+.mainSearchOptions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.searchOptions {
+    width: 35%;
+    display: grid;
+    grid-template-columns: 28% 28% 17% 17% 20%  ;
+    align-items: center; 
+    margin-top: 1vh;
+}
+
+.searchOptions > p {
+    font-size: 2vh;
+    border: 1px solid #e0e0e0;
+    width: 90%;
+    opacity: 0.8;
+    height: 70%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchOptions1 {
+    width: 17%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center; 
+}
+
+.searchOptions1 > p {
+    font-size: 2vh;
+    border: 1px solid #e0e0e0;
+    width: 90%;
+    opacity: 0.8;
+    height: 70%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerText {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
+.footerflex1 > p {
+    font-weight: 100;
+    opacity: 0.8;
+    font-size: 11px;
+    line-height: 3vh;
+}
+
+.footerflex1 {
+    width: 80%;
+}
+  </style>
+</head>
+<body>
+
+   <div class="navbar">
+        <div id="item1">
+            <img src="logo.png" alt="">
+        </div>
+        <div id="item2">
+            <p>Shop</p>
+        </div>
+        <div id="item3">
+            <p>AI</p>
+        </div>
+        <div id="item4">
+            <p>Mobile</p>
+        </div>
+        <div id="item5">
+            <p>TV & AV</p>
+        </div>
+        <div id="item6">
+            <p>Home Appliances</p>
+        </div>
+        <div id="item7">
+            <p>Computing</p>
+        </div>
+        <div id="item8">
+            <p>Displays</p>
+        </div>
+        <div id="item9">
+            <p>Accessories</p>
+        </div>
+        <div id="item10">
+            <p>SmartThings</p>
+        </div>
+        <div id="item11">
+            <p>Air Conditioners</p>
+        </div>
+        <div id="item12">
+            <p>Support</p>
+        </div>
+        <div id="item13">
+            <p>For Business</p>
+        </div>
+        <div id="item14">
+            <img src="search.png" alt="">
+        </div>
+        <div id="item15">
+            <img src="cart.png" alt="">
+        </div>
+        <div id="item16">
+            <img src="user.png" alt="">
+        </div>
+    </div>
+
+    <div class="autodelay1">
+        <img src="bg1.png" alt="">
+        <div class="position">
+            <p class="bold">Bespke AI<sup id="sup">TM</sup> laundry</p>
+            <p class="simple">Total AL Laundry. Perfect Washcare</p>
+            <button class="button1">Buy Now</button>
+        </div>
+    </div>
+    
+    <h1 class="h1">This Week's Highlights</h1>
+
+    <div class="parent1">
+        <div class="grid1">
+            <div class="NewIn">New In</div>
+            <div class="mobile">Mobile</div>
+            <div class="TV">TV</div>
+            <div class="Appliances">Appliances</div>
+            <div class="Ecosystem">Ecosystem</div>
+            <div class="SamsungLive">Samsung Live</div>
+        </div>
+    </div>
+
+    <div class="flexGrid1">
+        <div class="main1">
+            <img class="img1" src="S24_684X684.png" alt="">
+            <div class="text1">
+                <p class="p1">Galaxy S24 Series Starting ₹ 59999*</p>
+                <p class="p2">Avail up to 24 mo.No cost EMI</p>
+            </div>
+        </div>
+        <div class="grid2">
+            <div class="grid21">
+                <img src="Tab.png" alt="">
+                <div class="text11">Galaxy Tab S10 <br> with up to ₹15000 bank discount</div>
+            </div>
+            <div class="grid21">
+                <img src="RR.png" alt="">
+                <div class="text11">465 L BESPOKE AI<br>Avail benefits up to ₹8500*</div>
+            </div>
+            <div class="grid21">
+                <img src="Galaxy-Book4_330X330.png" alt="">
+                <div class="text12">Galaxy Book 4<br>with up to ₹13990* bank discount</div>
+            </div>
+            <div class="grid21">
+                <img src="TV.png" alt="">
+                <div class="text12">Save up to ₹3000* with bank <br>discount</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile1">
+        <div class="mobiletext">Mobile</div>
+            <div class="center">
+                <div class="mobgrid">
+                    <p>Galaxy Z Fold6</p>
+                    <p>Galaxy Z Flip6</p>
+                    <p>Galaxy S24 Ultra</p>
+                    <p>Galaxy Book4</p>
+                    <p>Galaxy Watch Ultra</p>
+                </div>
+            </div>
+        <div class="Zflipimg">
+            <img src="Zflip.png" alt="">
+        </div>    
+        
+        <div class="galaxytext1">Galaxy Z Flod6</div>
+        
+        <div class="galaxysimpletext">Starting ₹ 6014.32*/mo. <br> Get complete device protection twice a year at ₹ 999*</div>
+        
+        <div class="flex1">
+            <div class="lernMore">Learn more</div>
+            <a href="">
+                <div class="buy1">Buy now</div>
+            </a>
+        </div>
+    </div>
+
+    <div id="tvandav" class="mobile1">
+        <div class="tvtext">TV & AV</div>
+            <div class="center">
+                <div class="tvgrid">
+                    <p>Neo QLED 8K</p>
+                    <p>OLED</p>
+                    <p>Monitor</p>
+                    <p>The Frame</p>
+                    <p>Ceystal 4K UHD</p>
+                </div>
+            </div>
+        <div class="tvandav">
+            <img src="tvandav.png" alt="">
+        </div>    
+        
+        <div class="tvandavtext2">Upscale every moment with more Wow</div>
+        
+        <div class="tvandavsimpletext">Get Neo QLED 4K TV for free</div>
+        
+        <div class="flex2">
+            <a href="">
+                <div class="buy2">Buy now</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="WM1">
+        <div class="WMtext">Home Appliances</div>
+            <div class="center">
+                <div class="WMgrid">
+                    <p>8.0 kg Ecobubble<sup style="font-size: x-small;">TM</sup></p>
+                    <p>Double Door Refrigerator</p>
+                    <p>Bespoke Family Hub<sup style="font-size: x-small;">TM</sup> </p>
+                    <p>Convertible 5in1 SBS</p>
+                    <p>AI Laundry</p>
+                </div>
+            </div>
+        <div class="WMimg">
+            <img src="WM.png" alt="">
+        </div>    
+        
+        <div class="galaxytext3">8.0 kg AI Ecobubble<sup>TM</sup>   </div>
+        
+        <div class="galaxysimpletext">SmartThings & Wi-Fi </div>
+        
+        <div class="flex1">
+            <a href="">
+                <div class="buy1">Buy now</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="recommended">
+        <h1>Recommended Products</h1>
+        <div class="RecommendedMain">
+            <div class="product1">
+                <img src="in-galaxy-buds3-pro-r630-sm-r630nzwainu-thumb-542134838_$216_216_PNG$.png" alt="">
+                <p class="buds"><b>Galaxy Buds3 Pro</b></p>
+                <p class="colour1" style="margin-top: 6.6vh;"> <b>Colour</b>:White</p>
+                <div class="colourOption"><span></span></div>
+                <p class="mrp1" style="margin-top: 6.7vh;">MRP (Inclusive of all taxes) <del>₹ 24999.00</del> <b class="b1">Save ₹5000.00</b>
+                </p>
+                <p class="b2"><b>₹19999.00</b></p>
+                <a href="">EMI Calculator</a>
+                <div class="buynow">
+                    <a href="">Buy Now</a>
+                </div>
+            </div>
+            <div class="product2">
+                <img src="in-galaxy-s24-s928-sm-s928bztcins-thumb-539573311_$216_216_PNG$.png" alt="">
+                <p class="buds"><b>Galaxy S24 Ultra</b></p>
+                <p class="colour1"> <b>Colour</b>:Titanium Gray</p>
+                <div class="colourOption"><span style="background-color: #4d4e5f;"></span><span style="background-color: #62605f;"></span><span style="background-color: #aca49b;"></span></div>
+                <div class="storage">
+                    <p>256 GB</p>
+                    <p>512 GB</p>
+                    <p class="borderStorage">1 TB</p>
+                </div>
+                <p class="mrp2">MRP (Inclusive of all taxes) <del>₹ 164999.00</del> <b class="b1">Save ₹13000.00</b>
+                </p>
+                <p class="b2"><b>₹151999.00</b></p>
+                <a href="">EMI Calculator</a>
+                <div class="buynow">
+                    <a href="">Buy Now</a>
+                </div>
+            </div>
+            <div class="product3">
+                <img src="in-galaxy-tab-s10-plus-sm-x820-sm-x820nzaains-thumb-543763903_$216_216_PNG$.png" alt="">
+                <p class="buds"><b>Galaxy Tab S10+ (Wi-Fi,12 GB Memory)</b></p>
+                <p class="colour1" style="margin-top: 0px;"> <b>Colour</b>:Moonstone Gray</p>
+                <div class="colourOption"><span style="background-color: #606e81;"></span></div>
+                <div class="storage">
+                    <p class="borderStorage">256 GB</p>
+                </div>
+                <p class="mrp2">MRP (Inclusive of all taxes) <del>₹ 101999.00</del> <b class="b1">Save ₹11000.00</b>
+                </p>
+                <p class="b2"><b>₹90999.00</b></p>
+                <a href="">EMI Calculator</a>
+                <div class="buynow">
+                    <a href="">Buy Now</a>
+                </div>
+            </div>
+            <div class="product4">
+                <img src="in-galaxy-fit3-r390-sm-r390nzaainu-thumb-539989180_$216_216_PNG$.png" alt="">
+                <p class="buds"><b>Galaxy Fit3 (Bluethooth,4.0 <br> cm)</b></p>
+                <p class="colour1" style="margin-top: 0px;"> <b>Colour</b>:Gray</p>
+                <div class="colourOption">
+                    <span style="background-color: #e4e9e9;"></span>
+                    <span style="background-color: #3d3f43;"></span>
+                    <span style="background-color: #fcd0b8;"></span></div>
+                <p class="mrp2" style="margin-top: 7.5vh;">MRP (Inclusive of all taxes) <del>₹ 9999.00</del> <b class="b1">Save ₹5000.00</b>
+                </p>
+                <p class="b2"><b>₹4999.00</b></p>
+                <div class="buynow" style="margin-top: 7.3vh;">
+                    <a href="">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="remaining" style="font-size: 100px;" ></div>
+    <div class="lookingsomething">
+        <b>Looking for something else?</b>
+    </div>
+    
+    <div class="seach2">
+        <input height="100%" type="text" placeholder="      Search Keyword">
+    </div>
+
+    <div class="mainSearchOptions">
+        <div class="searchOptions">
+            <p>Galaxy Z Fold6</p>
+            <p>Galaxy Z Flip6</p>
+            <p>QLED 8k</p>
+            <p>UHD TVs</p>
+            <p>Eco bubble</p>
+        </div>
+    </div>
+
+    <div class="mainSearchOptions">
+        <div class="searchOptions1">
+            <p>Curd Maestro</p>
+            <p>Smart Monitors</p>
+        </div>
+    </div>
+
+    <div class="footerText">
+        <div class="footerflex1">
+            <p>* Image simulated. Samsung account login may be required for certain AI features.</p>
+            <p>* Image simulated. Available colours of Galaxy Buds3 Pro may vary by country or carrier. Galaxy Buds3 Pro supports  Galaxy AI features such as interpreter and Live Translate when paired with compatible Samsung Galaxy devices. Availability of Galaxy AI features may vary by device model. See samsung.com for details.</p>
+            <p>* Image simulated. Samsung account login is required for certain AI features.</p>
+            <p>* Color and model availability may vary depending on country or carrier.</p>
+            <p>* Samsung account login is required for certain AI features.</p>
+            <p>* 5G Devices are 5G ready, connectivity dependent on network availability.</p>
+            <p>* Images shown here are for representational purpose only, actual may vary. All features, specifications and prices are subject to change without prior notice. Model availability may vary from location to location.</p>
+            <p>* Image stipulated for representation purpose only. Cashback subject to maximum capping limit. Third party finance offers are at the sole discretion of the partners/NBFC/financiers. 10% cashback applicable as  per limits: Infinte variant: ₹ 5000 monthly, ₹ 20000 annually, Signature variant: ₹ 2500 monthly, ₹ 10000 annually.</p>
+            <p>* EMI computed on ₹ 250290 down payment, 30 months No Cost EMI on the MRP/Price of ₹ 339990 for 1 Unit of 65QN800C.</p>
+            <p>* S Pen Fold Edition sold separately and is only compatible with Z Fold5, Z Fold4 and Z Fold3. Flex mode supported at angles between 75˚ and 115˚.</p>
+            <p>* Galaxy Tab S9, Tab S9+, Tab S9 Ultra is rated as IP68. Based on test condition for submersion in up to 1.5 meter of fresh water for up to 30 mins. Not advised for beach or pool use.</p>
+            <p>* Image simulated. S Pen Fold Edition sold separately and is only compatible with Galaxy Z Fold4 and Galaxy Z Fold3.</p>
+            <p>* Watch screen image simulated for illustrative purpose. Availability of colours, sizes, models, and watch bands may vary by country or carrier.</p>
+            <p>* T&C Apply. Cashback at the sole discretion of the issuer / NBFC.</p>
+            <p>* Offers may be revised or withdrawn without prior notice.</p>
+            <p>* Select offers are also available separately.</p>
+            <p>* Free charger & free extended warranty are applicable on select models sold under Samsung corporate+ program. Samsung corporate+ program is applicable for select enrolled corporate's employees only.</p>
+        </div>
+    </div>
+    
+    <p style="height: 10vh;"></p>
+    <a href="">Go to next page</a>
+
+  <!-- ========== SIGNUP POPUP ========== -->
+  <div class="signup-overlay" id="signupModal">
+    <div class="signup-box">
+      <span class="close-btn" id="closeSignup">&times;</span>
+      <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung Logo">
+      </div>
+      <h2>Create your Samsung Account</h2>
+      <form>
+        <div class="input-group">
+          <input type="text" required>
+          <label>Full Name</label>
+        </div>
+
+        <div class="input-group">
+          <input type="email" required>
+          <label>Email</label>
+        </div>
+
+        <div class="input-group">
+          <input type="text" required>
+          <label>Phone Number</label>
+        </div>
+
+        <div class="input-group">
+          <input type="password" required>
+          <label>Password</label>
+        </div>
+
+        <div class="input-group">
+          <input type="password" required>
+          <label>Confirm Password</label>
+        </div>
+
+        <div class="terms">
+          <input type="checkbox" id="agree" required>
+          <label for="agree">I agree to Samsung’s <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.</label>
+        </div>
+
+        <button type="submit">Create Account</button>
+
+        <div class="signin-link">
+          <p>Already have an account? <a href="#">Sign in</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  ========== SCRIPT ==========
+  <script>
+    const openSignup = document.getElementById('openSignup');
+    const signupModal = document.getElementById('signupModal');
+    const closeSignup = document.getElementById('closeSignup');
+
+    openSignup.addEventListener('click', () => {
+      signupModal.style.display = 'flex';
+    });
+
+    closeSignup.addEventListener('click', () => {
+      signupModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === signupModal) {
+        signupModal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
