@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denim Verse - Bewakoof Clone</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for responsiveness and clean look -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        /* Custom Tailwind Configuration */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bewakoof-yellow': '#ffcd00',
+                        'dark-bg': '#1e1e1e',
+                        'dark-text': '#f5f5f5',
+                        'product-discount': '#008000',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Georgia', 'serif'], /* Using serif for the elegant "Denim Match" header */
+                    }
+                }
+            }
+        }
+        /* Custom scrollbar for the product rows, simulating a smooth carousel */
+        .product-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .product-scroll::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        
+        /* Custom styles for the Hero Section */
+        .hero-banner {
+            background-image: url('https://placehold.co/1200x500/cccccc/333333?text=DENIM+VERSE+BACKGROUND'); /* Placeholder for the background image */
+            background-size: cover;
+            background-position: center;
+            height: 400px; /* Default height */
+        }
+
+        /* Styling for the elegant "Find Your Denim Match" heading */
+        .denim-match-heading {
+            font-family: 'serif';
+            font-size: 2.5rem; /* Large text */
+            font-style: italic;
+        }
+
+        /* Small fit tags on product cards */
+        .fit-tag {
+            background-color: white;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 1px 6px;
+            font-size: 10px;
+            font-weight: 600;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+
+    <!-- 1. TOP BAR -->
+    <div class="bg-gray-100 text-xs text-gray-500 py-1 hidden sm:block">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between">
+            <div class="space-x-4">
+                <a href="#" class="hover:text-gray-900">Offers</a>
+                <a href="#" class="hover:text-gray-900">Download App</a>
+                <a href="#" class="hover:text-gray-900">Find a store near me</a>
+            </div>
+            <div class="space-x-4">
+                <a href="#" class="hover:text-gray-900">Contact Us</a>
+                <a href="#" class="hover:text-gray-900">Track Order</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. MAIN HEADER (Sticky) -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Logo and Main Links -->
+            <div class="flex items-center space-x-6">
+                <div class="text-xl font-extrabold text-bewakoof-yellow cursor-pointer">BEWAKOOF</div>
+                <nav class="hidden lg:flex text-sm font-semibold space-x-6">
+                    <a href="#" class="hover:text-bewakoof-yellow">MEN</a>
+                    <a href="#" class="hover:text-bewakoof-yellow">WOMEN</a>
+                    <a href="#" class="hover:text-bewakoof-yellow">MOBILE COVERS</a>
+                </nav>
+            </div>
+
+            <!-- Search, Login, Cart -->
+            <div class="flex items-center space-x-4">
+                <div class="relative hidden md:block">
+                    <input type="text" placeholder="Search by products" class="pl-10 pr-4 py-2 text-sm w-64 bg-gray-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-bewakoof-yellow">
+                    <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500"></i>
+                </div>
+                <a href="#" class="text-gray-600 hover:text-gray-900 hidden sm:block">
+                    <div class="text-sm font-semibold">LOGIN</div>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">
+                    <i data-lucide="heart" class="w-6 h-6"></i>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">
+                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                </a>
+                <button class="lg:hidden text-gray-600 hover:text-gray-900">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 3. HERO/BANNER SECTION (Screenshot 2025-10-28 103854.jpg) -->
+        <section class="hero-banner relative">
+            <div class="max-w-7xl mx-auto px-4 h-full flex flex-col justify-end pb-16">
+                <!-- Text Overlays -->
+                <div class="text-white">
+                    <div class="text-sm font-semibold bg-red-600 text-white px-2 py-1 w-fit rounded-full mb-4">
+                        HOT NEW STYLES ADDED
+                    </div>
+                    <p class="text-6xl font-extrabold tracking-tight mb-2 uppercase">DENIM VERSE</p>
+                    <p class="text-lg font-light tracking-widest">A FIT FOR EVERY YOU</p>
+                </div>
+            </div>
+            
+            <!-- Yellow Coupon Bar -->
+            <div class="bg-bewakoof-yellow text-gray-900 text-center py-3 font-extrabold text-sm sm:text-lg">
+                USE CODE: DENIM100 AND GET FLAT ₹100 OFF ON MINIMUM ORDER VALUE OF ₹1299
+            </div>
+        </section>
+
+        <!-- 4. PRODUCT LISTING: DENIMS UNDER RS.1299 (Screenshot 2025-10-28 104206.jpg) -->
+        <section class="max-w-7xl mx-auto p-4 py-10">
+            <div class="text-center mb-6">
+                <div class="flex justify-center space-x-1 mb-4">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-300 rounded-full"></span>
+                    <span class="w-2 h-2 bg-gray-300 rounded-full"></span>
+                </div>
+                <h2 class="text-xl font-bold tracking-widest uppercase">DENIMS UNDER RS.1299</h2>
+            </div>
+            <div class="relative">
+                <!-- Product Scroll Container (Simulates Carousel) -->
+                <div class="flex overflow-x-auto space-x-4 pb-4 product-scroll snap-x snap-mandatory">
+                    
+                    <!-- Product Card 1 -->
+                    <div class="min-w-[48%] sm:min-w-[32%] lg:min-w-[20%] snap-start group">
+                        <div class="bg-white rounded-lg overflow-hidden transition-shadow duration-300">
+                            <!-- Image -->
+                            <div class="relative aspect-[3/4] bg-gray-100">
+                                <img src="https://placehold.co/400x500/4a89dc/FFFFFF?text=Washed+Distressed+Denim" alt="Blue Washed Distressed Denim" class="w-full h-full object-cover">
+                                <div class="absolute top-2 left-2 fit-tag">SLIM STRAIGHT FIT</div>
+                                <div class="absolute bottom-2 left-2 flex items-center bg-white text-yellow-500 rounded-full px-1.5 py-0.5 text-xs font-bold">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-500 mr-0.5"></i> 4.5
+                                </div>
+                            </div>
+                            <!-- Details -->
+                            <div class="p-2">
+                                <div class="flex justify-between items-start">
+                                    <div class="truncate w-11/12">
+                                        <p class="text-xs font-bold text-gray-900">Bewakoof®</p>
+                                        <p class="text-sm text-gray-600 truncate">Men's Blue Washed Straight Fit Distressed...</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-red-500 transition-colors duration-200">
+                                        <i data-lucide="heart" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-1 flex items-center space-x-2 text-sm">
+                                    <span class="font-bold">₹799</span>
+                                    <span class="text-xs text-gray-500 line-through">₹2999</span>
+                                    <span class="text-product-discount text-xs font-semibold">74% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="min-w-[48%] sm:min-w-[32%] lg:min-w-[20%] snap-start group">
+                        <div class="bg-white rounded-lg overflow-hidden transition-shadow duration-300">
+                            <div class="relative aspect-[3/4] bg-gray-100">
+                                <img src="https://placehold.co/400x500/1f2937/FFFFFF?text=Slim+Straight+Denim" alt="Jet Black Slim Straight Denim" class="w-full h-full object-cover">
+                                <div class="absolute top-2 left-2 fit-tag">SLIM STRAIGHT FIT</div>
+                                <div class="absolute bottom-2 left-2 flex items-center bg-white text-yellow-500 rounded-full px-1.5 py-0.5 text-xs font-bold">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-500 mr-0.5"></i> 4.3
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="flex justify-between items-start">
+                                    <div class="truncate w-11/12">
+                                        <p class="text-xs font-bold text-gray-900">Bewakoof®</p>
+                                        <p class="text-sm text-gray-600 truncate">Men's Blue Slim Straight Fit Stretchable...</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-red-500 transition-colors duration-200">
+                                        <i data-lucide="heart" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-1 flex items-center space-x-2 text-sm">
+                                    <span class="font-bold">₹999</span>
+                                    <span class="text-xs text-gray-500 line-through">₹2799</span>
+                                    <span class="text-product-discount text-xs font-semibold">64% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="min-w-[48%] sm:min-w-[32%] lg:min-w-[20%] snap-start group">
+                        <div class="bg-white rounded-lg overflow-hidden transition-shadow duration-300">
+                            <div class="relative aspect-[3/4] bg-gray-100">
+                                <img src="https://placehold.co/400x500/1e3a8a/FFFFFF?text=Baggy+Fit+Denim" alt="Blue Washed Baggy Fit Denim" class="w-full h-full object-cover">
+                                <div class="absolute top-2 left-2 fit-tag">BAGGY FIT</div>
+                                <div class="absolute bottom-2 left-2 flex items-center bg-white text-yellow-500 rounded-full px-1.5 py-0.5 text-xs font-bold">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-500 mr-0.5"></i> 4.5
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="flex justify-between items-start">
+                                    <div class="truncate w-11/12">
+                                        <p class="text-xs font-bold text-gray-900">Bewakoof®</p>
+                                        <p class="text-sm text-gray-600 truncate">Men's Blue Washed Baggy Fit Mid Rise...</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-red-500 transition-colors duration-200">
+                                        <i data-lucide="heart" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-1 flex items-center space-x-2 text-sm">
+                                    <span class="font-bold">₹799</span>
+                                    <span class="text-xs text-gray-500 line-through">₹2899</span>
+                                    <span class="text-product-discount text-xs font-semibold">72% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Card 4 -->
+                    <div class="min-w-[48%] sm:min-w-[32%] lg:min-w-[20%] snap-start group">
+                        <div class="bg-white rounded-lg overflow-hidden transition-shadow duration-300">
+                            <div class="relative aspect-[3/4] bg-gray-100">
+                                <img src="https://placehold.co/400x500/38761d/FFFFFF?text=Cargo+Baggy+Denim" alt="Green Distressed Cargo Baggy Fit" class="w-full h-full object-cover">
+                                <div class="absolute top-2 left-2 fit-tag">BAGGY FIT</div>
+                                <div class="absolute bottom-2 left-2 flex items-center bg-white text-yellow-500 rounded-full px-1.5 py-0.5 text-xs font-bold">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-500 mr-0.5"></i> 4.4
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="flex justify-between items-start">
+                                    <div class="truncate w-11/12">
+                                        <p class="text-xs font-bold text-gray-900">Bewakoof®</p>
+                                        <p class="text-sm text-gray-600 truncate">Men's Green Distressed Baggy Fit Cargo...</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-red-500 transition-colors duration-200">
+                                        <i data-lucide="heart" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-1 flex items-center space-x-2 text-sm">
+                                    <span class="font-bold">₹1099</span>
+                                    <span class="text-xs text-gray-500 line-through">₹2999</span>
+                                    <span class="text-product-discount text-xs font-semibold">73% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 5 -->
+                    <div class="min-w-[48%] sm:min-w-[32%] lg:min-w-[20%] snap-start group">
+                        <div class="bg-white rounded-lg overflow-hidden transition-shadow duration-300">
+                            <div class="relative aspect-[3/4] bg-gray-100">
+                                <img src="https://placehold.co/400x500/4c4c4c/FFFFFF?text=Olive+Green+Baggy+Denim" alt="Olive Green Super Baggy Fit" class="w-full h-full object-cover">
+                                <div class="absolute top-2 left-2 fit-tag">SUPER BAGGY FIT</div>
+                                <div class="absolute bottom-2 left-2 flex items-center bg-white text-yellow-500 rounded-full px-1.5 py-0.5 text-xs font-bold">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-500 mr-0.5"></i> 4.4
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="flex justify-between items-start">
+                                    <div class="truncate w-11/12">
+                                        <p class="text-xs font-bold text-gray-900">Bewakoof®</p>
+                                        <p class="text-sm text-gray-600 truncate">Men's Olive Green Super Baggy Fit Mid...</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-red-500 transition-colors duration-200">
+                                        <i data-lucide="heart" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-1 flex items-center space-x-2 text-sm">
+                                    <span class="font-bold">₹1299</span>
+                                    <span class="text-xs text-gray-500 line-through">₹3499</span>
+                                    <span class="text-product-discount text-xs font-semibold">62% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add more padding on the right for clean scroll stop -->
+                    <div class="min-w-[10px]"></div>
+                </div>
+
+                <!-- Carousel Navigation Arrows (Simulated) -->
+                <button class="absolute left-0 top-1/3 transform -translate-y-1/2 bg-white/70 backdrop-blur-sm p-2 rounded-full shadow-md hover:bg-white transition-colors duration-200 hidden sm:block">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <button class="absolute right-0 top-1/3 transform -translate-y-1/2 bg-white/70 backdrop-blur-sm p-2 rounded-full shadow-md hover:bg-white transition-colors duration-200 hidden sm:block">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </section>
+
+        <div class="text-center my-6">
+            <a href="#" class="text-sm text-gray-500 hover:underline">Explore All</a>
+        </div>
+
+
+        <!-- 5. FEATURED SECTION: FIND YOUR DENIM MATCH (Screenshot 2025-10-28 104143.jpg) -->
+        <section class="max-w-7xl mx-auto p-4 py-10">
+            <h2 class="text-center mb-10 text-gray-800 denim-match-heading">
+                Find Your <span class="text-gray-900 italic font-serif">Denim Match</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                
+                <!-- Feature Card 1 -->
+                <div class="relative overflow-hidden rounded-xl h-[500px] bg-gray-200">
+                    <img src="https://placehold.co/400x500/4a89dc/FFFFFF?text=Baggy+Style+Denim" alt="Baggy Style Denim" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                </div>
+                
+                <!-- Feature Card 2 -->
+                <div class="relative overflow-hidden rounded-xl h-[500px] bg-gray-200">
+                    <img src="https://placehold.co/400x500/1f2937/FFFFFF?text=Straight+Fit+Denim" alt="Straight Fit Denim" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="relative overflow-hidden rounded-xl h-[500px] bg-gray-200">
+                    <img src="https://placehold.co/400x500/9ca3af/FFFFFF?text=Cargo+Denim+Style" alt="Cargo Denim Style" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- 6. PRODUCT LISTING: BESTSELLER DENIMS (Same structure as #4 but with different heading/content) -->
+        <section class="max-w-7xl mx-auto p-4 py-10">
+            <div class="text-center mb-6">
+                <h2 class="text-xl font-bold tracking-widest uppercase">BESTSELLER DENIMS</h2>
+            </div>
+            <!-- Reusing the product scroll structure for a new row of products -->
+            <div class="relative">
+                <div class="flex overflow-x-auto space-x-4 pb-4 product-scroll snap-x snap-mandatory">
+                    
+                    <!-- Product Card 1 (Placeholder) -->
+                    <div class="min-w-[48%] sm:min-w-[32%] lg:min-w-[20%] snap-start group">
+                        <div class="bg-white rounded-lg overflow-hidden transition-shadow duration-300">
+                            <div class="relative aspect-[3/4] bg-gray-100">
+                                <img src="https://placehold.co/400x500/818181/FFFFFF?text=Light+Wash+Baggy" alt="Light Wash Baggy Denim" class="w-full h-full object-cover">
+                                <div class="absolute top-2 left-2 fit-tag">BAGGY FIT</div>
+                                <div class="absolute bottom-2 left-2 flex items-center bg-white text-yellow-500 rounded-full px-1.5 py-0.5 text-xs font-bold">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-500 mr-0.5"></i> 4.5
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="flex justify-between items-start">
+                                    <div class="truncate w-11/12">
+                                        <p class="text-xs font-bold text-gray-900">Bewakoof®</p>
+                                        <p class="text-sm text-gray-600 truncate">Men's Light Blue Washed Baggy Fit Distressed...</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-red-500 transition-colors duration-200">
+                                        <i data-lucide="heart" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-1 flex items-center space-x-2 text-sm">
+                                    <span class="font-bold">₹999</span>
+                                    <span class="text-xs text-gray-500 line-through">₹2999</span>
+                                    <span class="text-product-discount text-xs font-semibold">66% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 (Placeholder) -->
+                    <div class="min-w-[48%] sm:min-w-[32%] lg:min-w-[20%] snap-start group">
+                        <div class="bg-white rounded-lg overflow-hidden transition-shadow duration-300">
+                            <div class="relative aspect-[3/4] bg-gray-100">
+                                <img src="https://placehold.co/400x500/111111/FFFFFF?text=Black+Straight" alt="Black Slim Straight Denim" class="w-full h-full object-cover">
+                                <div class="absolute top-2 left-2 fit-tag">SLIM STRAIGHT FIT</div>
+                                <div class="absolute bottom-2 left-2 flex items-center bg-white text-yellow-500 rounded-full px-1.5 py-0.5 text-xs font-bold">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-500 mr-0.5"></i> 4.4
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="flex justify-between items-start">
+                                    <div class="truncate w-11/12">
+                                        <p class="text-xs font-bold text-gray-900">Bewakoof®</p>
+                                        <p class="text-sm text-gray-600 truncate">Men's Jet Black Slim Straight Fit Stretchable...</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-red-500 transition-colors duration-200">
+                                        <i data-lucide="heart" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-1 flex items-center space-x-2 text-sm">
+                                    <span class="font-bold">₹999</span>
+                                    <span class="text-xs text-gray-500 line-through">₹2799</span>
+                                    <span class="text-product-discount text-xs font-semibold">64% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 (Placeholder) -->
+                    <div class="min-w-[48%] sm:min-w-[32%] lg:min-w-[20%] snap-start group">
+                        <div class="bg-white rounded-lg overflow-hidden transition-shadow duration-300">
+                            <div class="relative aspect-[3/4] bg-gray-100">
+                                <img src="https://placehold.co/400x500/50a1d5/FFFFFF?text=Mid+Blue+Baggy" alt="Mid Blue Baggy Denim" class="w-full h-full object-cover">
+                                <div class="absolute top-2 left-2 fit-tag">BAGGY FIT</div>
+                                <div class="absolute bottom-2 left-2 flex items-center bg-white text-yellow-500 rounded-full px-1.5 py-0.5 text-xs font-bold">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-500 mr-0.5"></i> 4.5
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="flex justify-between items-start">
+                                    <div class="truncate w-11/12">
+                                        <p class="text-xs font-bold text-gray-900">Bewakoof®</p>
+                                        <p class="text-sm text-gray-600 truncate">Men's Blue Washed Baggy Fit Distressed...</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-red-500 transition-colors duration-200">
+                                        <i data-lucide="heart" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-1 flex items-center space-x-2 text-sm">
+                                    <span class="font-bold">₹799</span>
+                                    <span class="text-xs text-gray-500 line-through">₹2999</span>
+                                    <span class="text-product-discount text-xs font-semibold">73% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 (Placeholder) -->
+                    <div class="min-w-[48%] sm:min-w-[32%] lg:min-w-[20%] snap-start group">
+                        <div class="bg-white rounded-lg overflow-hidden transition-shadow duration-300">
+                            <div class="relative aspect-[3/4] bg-gray-100">
+                                <img src="https://placehold.co/400x500/222222/FFFFFF?text=Black+Distressed+Baggy" alt="Black Distressed Baggy Denim" class="w-full h-full object-cover">
+                                <div class="absolute top-2 left-2 fit-tag">BAGGY FIT</div>
+                                <div class="absolute bottom-2 left-2 flex items-center bg-white text-yellow-500 rounded-full px-1.5 py-0.5 text-xs font-bold">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-500 mr-0.5"></i> 4.5
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="flex justify-between items-start">
+                                    <div class="truncate w-11/12">
+                                        <p class="text-xs font-bold text-gray-900">Bewakoof®</p>
+                                        <p class="text-sm text-gray-600 truncate">Men's Black Baggy Fit Distressed Mid Ri...</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-red-500 transition-colors duration-200">
+                                        <i data-lucide="heart" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-1 flex items-center space-x-2 text-sm">
+                                    <span class="font-bold">₹1499</span>
+                                    <span class="text-xs text-gray-500 line-through">₹2999</span>
+                                    <span class="text-product-discount text-xs font-semibold">50% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Card 5 (Placeholder) -->
+                    <div class="min-w-[48%] sm:min-w-[32%] lg:min-w-[20%] snap-start group">
+                        <div class="bg-white rounded-lg overflow-hidden transition-shadow duration-300">
+                            <div class="relative aspect-[3/4] bg-gray-100">
+                                <img src="https://placehold.co/400x500/354562/FFFFFF?text=Indigo+Straight" alt="Indigo Slim Straight Denim" class="w-full h-full object-cover">
+                                <div class="absolute top-2 left-2 fit-tag">SLIM STRAIGHT FIT</div>
+                                <div class="absolute bottom-2 left-2 flex items-center bg-white text-yellow-500 rounded-full px-1.5 py-0.5 text-xs font-bold">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-500 mr-0.5"></i> 4.5
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="flex justify-between items-start">
+                                    <div class="truncate w-11/12">
+                                        <p class="text-xs font-bold text-gray-900">Bewakoof®</p>
+                                        <p class="text-sm text-gray-600 truncate">Men's Indigo Blue Slim Straight Fit Stretc...</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-red-500 transition-colors duration-200">
+                                        <i data-lucide="heart" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-1 flex items-center space-x-2 text-sm">
+                                    <span class="font-bold">₹999</span>
+                                    <span class="text-xs text-gray-500 line-through">₹2799</span>
+                                    <span class="text-product-discount text-xs font-semibold">64% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add more padding on the right for clean scroll stop -->
+                    <div class="min-w-[10px]"></div>
+                </div>
+
+                <!-- Carousel Navigation Arrows (Simulated) -->
+                <button class="absolute left-0 top-1/3 transform -translate-y-1/2 bg-white/70 backdrop-blur-sm p-2 rounded-full shadow-md hover:bg-white transition-colors duration-200 hidden sm:block">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <button class="absolute right-0 top-1/3 transform -translate-y-1/2 bg-white/70 backdrop-blur-sm p-2 rounded-full shadow-md hover:bg-white transition-colors duration-200 hidden sm:block">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- 7. FOOTER (Screenshot 2025-10-28 104406.png / 104416.png) -->
+    <footer class="bg-dark-bg text-dark-text pt-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Footer Main Links (Desktop 4-column, Mobile stacked) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-gray-700">
+
+                <!-- Column 1: Customer Service -->
+                <div>
+                    <div class="text-2xl font-extrabold text-bewakoof-yellow cursor-pointer mb-6">BEWAKOOF</div>
+                    <h4 class="text-lg font-bold text-white mb-4">CUSTOMER SERVICE</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-bewakoof-yellow transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow transition-colors">Track Order</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow transition-colors">Return Order</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow transition-colors">Cancel Order</a></li>
+                    </ul>
+                    <div class="mt-6 space-y-2 text-sm">
+                        <p class="flex items-center text-gray-400"><i data-lucide="rotate-ccw" class="w-4 h-4 mr-2 text-white"></i> 15 Days Return Policy*</p>
+                        <p class="flex items-center text-gray-400"><i data-lucide="truck" class="w-4 h-4 mr-2 text-white"></i> Cash On Delivery*</p>
+                    </div>
+                </div>
+
+                <!-- Column 2: Company & Download App -->
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">COMPANY</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-bewakoof-yellow transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow transition-colors">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow transition-colors">We are Hiring</a></li>
+                    </ul>
+
+                    <h4 class="text-lg font-bold text-white mt-8 mb-4">DOWNLOAD THE APP</h4>
+                    <div class="flex space-x-2">
+                        <a href="#"><img src="https://placehold.co/120x40/333333/FFFFFF?text=Google+Play" alt="Google Play" class="rounded"></a>
+                        <a href="#"><img src="https://placehold.co/120x40/333333/FFFFFF?text=App+Store" alt="App Store" class="rounded"></a>
+                    </div>
+                </div>
+
+                <!-- Column 3: Connect With Us & Payment -->
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">CONNECT WITH US</h4>
+                    <div class="space-y-1 text-sm text-gray-400">
+                        <p>4.7M People like this</p>
+                        <p>1M People like this</p>
+                    </div>
+                    <div class="flex space-x-4 mt-3 text-white">
+                        <a href="#" class="hover:text-bewakoof-yellow"><i data-lucide="facebook" class="w-5 h-5 fill-white hover:fill-bewakoof-yellow"></i></a>
+                        <a href="#" class="hover:text-bewakoof-yellow"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="hover:text-bewakoof-yellow"><i data-lucide="pinterest" class="w-5 h-5"></i></a>
+                        <a href="#" class="hover:text-bewakoof-yellow"><i data-lucide="apple" class="w-5 h-5"></i></a>
+                    </div>
+
+                    <h4 class="text-lg font-bold text-white mt-8 mb-4">100% SECURE PAYMENT</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <!-- Placeholder Payment Logos -->
+                        <img src="https://placehold.co/40x25/333333/FFFFFF?text=Pay" alt="Payment" class="rounded">
+                        <img src="https://placehold.co/40x25/333333/FFFFFF?text=VISA" alt="Payment" class="rounded">
+                        <img src="https://placehold.co/40x25/333333/FFFFFF?text=MC" alt="Payment" class="rounded">
+                        <img src="https://placehold.co/40x25/333333/FFFFFF?text=AX" alt="Payment" class="rounded">
+                        <img src="https://placehold.co/40x25/333333/FFFFFF?text=DC" alt="Payment" class="rounded">
+                    </div>
+                </div>
+
+                <!-- Column 4: Keep Up To Date -->
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">KEEP UP TO DATE</h4>
+                    <div class="flex">
+                        <input type="email" placeholder="Enter Email Id:" class="p-3 text-sm text-gray-900 w-full rounded-l-lg focus:outline-none" />
+                        <button class="bg-bewakoof-yellow text-gray-900 font-bold px-4 rounded-r-lg text-sm hover:bg-yellow-400 transition-colors">SUBSCRIBE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Detailed Link Section (Screenshot 2025-10-28 104406.png / 104416.png) -->
+            <div class="py-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 text-sm">
+                <!-- Links Group 1: Men's Clothing -->
+                <div>
+                    <h5 class="font-bold text-white mb-3">Men's Clothing</h5>
+                    <ul class="space-y-1 text-gray-400">
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Top Wear</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Men's New Arrivals</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Men's T-Shirts</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Men's Hoodies & Sweatshirts</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Oversized T-shirts for Men</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Men's Long Sleeve T-shirts</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Men's Plain T-shirts</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Men's Plus Size T-Shirts</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Men's Polo T-Shirts</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Men's Sweaters</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Men's Jeans</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Men's Sweatpants</a></li>
+                        <!-- ... many more links omitted for brevity ... -->
+                    </ul>
+                </div>
+
+                <!-- Links Group 2: Women's Clothing -->
+                <div>
+                    <h5 class="font-bold text-white mb-3">Women's Clothing</h5>
+                    <ul class="space-y-1 text-gray-400">
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Women's Top Wear</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Women's New Arrivals</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Women's T-Shirts</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Women's Fashion Tops</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Women's Loose T-shirts</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Women's Tank Tops</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Women's Hoodies & Sweatshirts</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Women's Dresses</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Women's 3/4 Sleeve T-Shirts</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Women's Bottom Wear</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Women's Co-ord Sets</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Women's Pyjamas</a></li>
+                        <!-- ... many more links omitted for brevity ... -->
+                    </ul>
+                </div>
+
+                <!-- Links Group 3: Mobile Covers & Bags -->
+                <div>
+                    <h5 class="font-bold text-white mb-3">Mobile Covers</h5>
+                    <ul class="space-y-1 text-gray-400">
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Apple</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Realme</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Samsung</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Xiaomi</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Oneplus</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Vivo</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Poco</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Anime Mobile Covers</a></li>
+                    </ul>
+                    <h5 class="font-bold text-white mt-6 mb-3">BAGS</h5>
+                    <ul class="space-y-1 text-gray-400">
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Laptop Bags</a></li>
+                        <li><a href="#" class="hover:text-bewakoof-yellow">Small Backpacks</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links Group 4: Featured & Side Links -->
+                <div class="col-span-2 md:col-span-1 lg:col-span-3 flex justify-between">
+                    <div>
+                        <h5 class="font-bold text-white mb-3">Featured</h5>
+                        <ul class="space-y-1 text-gray-400">
+                            <li><a href="#" class="hover:text-bewakoof-yellow">Women's Slides</a></li>
+                            <li><a href="#" class="hover:text-bewakoof-yellow">Women's Flip Flops</a></li>
+                            <li><a href="#" class="hover:text-bewakoof-yellow">Men's Flip Flops</a></li>
+                            <li><a href="#" class="hover:text-bewakoof-yellow">Men's Sliders</a></li>
+                            <li><a href="#" class="hover:text-bewakoof-yellow">Marvel T-Shirts</a></li>
+                            <li><a href="#" class="hover:text-bewakoof-yellow">Disney T-Shirts</a></li>
+                            <li><a href="#" class="hover:text-bewakoof-yellow">Avengers T-Shirts</a></li>
+                            <li><a href="#" class="hover:text-bewakoof-yellow">Star Wars T-Shirts</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Side Links (FANBOOK, OFFERS, SITEMAP) -->
+                    <div class="text-right flex flex-col justify-end h-full space-y-4">
+                        <a href="#" class="text-bewakoof-yellow font-bold text-lg hover:underline">FANBOOK</a>
+                        <a href="#" class="text-bewakoof-yellow font-bold text-lg hover:underline">OFFERS</a>
+                        <a href="#" class="text-bewakoof-yellow font-bold text-lg hover:underline">SITEMAP</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-4 text-center text-xs text-gray-500 border-t border-gray-700">
+                &copy; 2024 Bewakoof Clone. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

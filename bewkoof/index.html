@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bewakoof Style E-commerce Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
+        }
+
+        .product-carousel {
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .product-card-container {
+            scroll-snap-align: start;
+            flex-shrink: 0;
+        }
+        @media (min-width: 768px) {
+            .product-card-container {
+            }
+        }
+        
+        .search-input {
+            background-color: #f0f0f0;
+        }
+
+        .dark-footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+        }
+        .dark-footer a {
+            color: #ccc;
+            transition: color 0.2s;
+        }
+        .dark-footer a:hover {
+            color: #fff;
+        }
+        .dark-footer .logo-text {
+            color: #ffda00; 
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                <div class="text-2xl font-black text-gray-900 logo-text">BEWAKOOF</div>
+
+                <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-700 ml-8">
+                    <a href="#" class="hover:text-gray-900">MEN</a>
+                    <a href="#" class="hover:text-gray-900">WOMEN</a>
+                    <a href="#" class="hover:text-gray-900">MOBILE COVERS</a>
+                </nav>
+
+                <div class="flex items-center space-x-4">
+                    <div class="relative hidden lg:block">
+                        <input type="text" placeholder="Search by products" class="search-input pl-10 pr-4 py-2 text-sm rounded-lg w-64 focus:outline-none focus:ring-1 focus:ring-gray-400">
+                        <i data-lucide="search" class="w-4 h-4 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+                    </div>
+
+                    <div class="hidden sm:flex items-center space-x-4 text-sm font-medium">
+                        <a href="#" class="hover:text-gray-900">LOGIN</a>
+                        <button aria-label="Wishlist" class="p-1"><i data-lucide="heart" class="w-5 h-5 text-gray-700"></i></button>
+                        <button aria-label="Cart" class="p-1"><i data-lucide="shopping-bag" class="w-5 h-5 text-gray-700"></i></button>
+                    </div>
+                    <div class="sm:hidden flex items-center space-x-2">
+                        <button aria-label="Search" class="p-1"><i data-lucide="search" class="w-5 h-5 text-gray-700"></i></button>
+                        <button aria-label="Cart" class="p-1"><i data-lucide="shopping-bag" class="w-5 h-5 text-gray-700"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="flex overflow-x-auto space-x-6 py-3 font-semibold text-gray-900 whitespace-nowrap scrollbar-hide">
+                <a href="#" class="text-sm px-4 py-1 rounded-full bg-yellow-400 font-bold hover:bg-yellow-500 transition-colors">MEN</a>
+                <a href="#" class="text-sm px-4 py-1 text-gray-700 hover:text-gray-900 transition-colors">WOMEN</a>
+                <a href="#" class="text-sm px-4 py-1 text-gray-700 hover:text-gray-900 transition-colors">WINTERWEAR</a>
+                <a href="#" class="text-sm px-4 py-1 text-gray-700 hover:text-gray-900 transition-colors">SHOP NOW</a>
+                <a href="#" class="text-sm px-4 py-1 text-gray-700 hover:text-gray-900 transition-colors">PLUS SIZE</a>
+                <a href="#" class="text-sm px-4 py-1 text-gray-700 hover:text-gray-900 transition-colors">BWKF X GOOGLE AI</a>
+                <a href="#" class="text-sm px-4 py-1 text-gray-700 hover:text-gray-900 transition-colors">ACCESSORIES</a>
+                <a href="#" class="text-sm px-4 py-1 text-gray-700 hover:text-gray-900 transition-colors">OFFICIAL MERCH</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <a href="./denim verse.html"><div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="relative col-span-1 h-80 rounded-xl overflow-hidden shadow-lg bg-cover bg-center" style="background-image: url('https://placehold.co/600x800/e0e0e0/333333?text=DENIM+VERSE+MODEL')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute top-4 left-4 text-white text-xs font-bold bg-red-600 px-3 py-1 rounded-full">HOT NEW STYLES ADDED</div>
+                <div class="absolute bottom-4 left-4 text-white">
+                    <h3 class="text-2xl font-extrabold mb-1">DENIM VERSE</h3>
+                    <p class="text-sm">A FIT FOR EVERY YOU</p>
+                    <div class="mt-2 text-xs font-semibold bg-yellow-400 text-black px-3 py-1 rounded-md inline-block">USE CODE: DENIM100 AND GET FLAT ₹100 OFF</div>
+                </div>
+            </div>
+            </a>
+
+            <div class="relative col-span-1 h-80 rounded-xl overflow-hidden shadow-lg bg-cover bg-center" style="background-image: url('https://placehold.co/600x800/f5f5f5/1a1a1a?text=T-SHIRTS+HANGING')">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center text-gray-900">
+                        <h3 class="text-3xl font-extrabold mt-16">BUY 2</h3>
+                        <h3 class="text-4xl font-extrabold mb-2">OVERSIZED T-SHIRTS</h3>
+                        <h3 class="text-3xl font-extrabold text-red-600">AT ₹999</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative col-span-1 h-80 rounded-xl overflow-hidden shadow-lg bg-cover bg-center" style="background-image: url('https://placehold.co/600x800/d4ac8d/333333?text=JOGGERS+STACK')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-4 right-4 text-white text-right">
+                    <h3 class="text-3xl font-extrabold mb-2">JOGGERS</h3>
+                    <h3 class="text-4xl font-extrabold text-yellow-400">BUY 2 AT ₹1699</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6 py-4 px-6 bg-yellow-100 rounded-xl border border-yellow-300 text-center font-semibold text-gray-800 text-lg">
+            GET 10% CASHBACK | USE CODE: GETCASH10
+        </div>
+    </main>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-2xl font-bold text-center mb-8">Trending Categories</h2>
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-2">
+            <div class="relative h-48 rounded-lg overflow-hidden group">
+                <img src="https://placehold.co/200x300/e0e0e0/333333?text=Oversized+T-shirts" alt="Oversized T-shirts category" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors"></div>
+                <span class="absolute bottom-2 left-2 text-white text-lg font-bold">Oversized T-shirts</span>
+            </div>
+            <div class="relative h-48 rounded-lg overflow-hidden group">
+                <img src="https://placehold.co/200x300/a0a0a0/ffffff?text=Warm+Joggers" alt="Warm Joggers category" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <span class="absolute bottom-2 left-2 text-white text-lg font-bold">Warm Joggers</span>
+            </div>
+            <div class="relative h-48 rounded-lg overflow-hidden group">
+                <img src="https://placehold.co/200x300/f0f0f0/1a1a1a?text=Hoodies" alt="Hoodies category" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <span class="absolute bottom-2 left-2 text-white text-lg font-bold">Hoodies</span>
+            </div>
+            <div class="relative h-48 rounded-lg overflow-hidden group">
+                <img src="https://placehold.co/200x300/d2d2d2/444444?text=Shirts" alt="Shirts category" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <span class="absolute bottom-2 left-2 text-white text-lg font-bold">Shirts</span>
+            </div>
+            <div class="relative h-48 rounded-lg overflow-hidden group">
+                <img src="https://placehold.co/200x300/c04040/ffffff?text=Sweatshirts" alt="Sweatshirts category" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <span class="absolute bottom-2 left-2 text-white text-lg font-bold">Sweatshirts</span>
+            </div>
+            <div class="relative h-48 rounded-lg overflow-hidden group">
+                <img src="https://placehold.co/200x300/444444/ffffff?text=Full+Sleeve" alt="Full Sleeve T-shirts category" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <span class="absolute bottom-2 left-2 text-white text-lg font-bold">Full Sleeve T-shirts</span>
+            </div>
+            <!-- Second row of categories (as seen in screenshot) -->
+            <div class="relative h-48 rounded-lg overflow-hidden group">
+                <img src="https://placehold.co/200x300/e0e0e0/333333?text=T-shirts" alt="T-shirts category" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <span class="absolute bottom-2 left-2 text-white text-lg font-bold">T-shirts</span>
+            </div>
+            <div class="relative h-48 rounded-lg overflow-hidden group">
+                <img src="https://placehold.co/200x300/a0a0a0/ffffff?text=Jeans" alt="Jeans category" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <span class="absolute bottom-2 left-2 text-white text-lg font-bold">Jeans</span>
+            </div>
+            <div class="relative h-48 rounded-lg overflow-hidden group">
+                <img src="https://placehold.co/200x300/f0f0f0/1a1a1a?text=Trousers" alt="Trousers category" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <span class="absolute bottom-2 left-2 text-white text-lg font-bold">Trousers</span>
+            </div>
+            <div class="relative h-48 rounded-lg overflow-hidden group">
+                <img src="https://placehold.co/200x300/d2d2d2/444444?text=Pyjamas" alt="Pyjamas category" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <span class="absolute bottom-2 left-2 text-white text-lg font-bold">Pyjamas</span>
+            </div>
+            <div class="relative h-48 rounded-lg overflow-hidden group">
+                <img src="https://placehold.co/200x300/c04040/ffffff?text=Jackets" alt="Jackets category" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <span class="absolute bottom-2 left-2 text-white text-lg font-bold">Jackets</span>
+            </div>
+            <div class="relative h-48 rounded-lg overflow-hidden group">
+                <img src="https://placehold.co/200x300/444444/ffffff?text=All+Apparel" alt="All Apparel category" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <span class="absolute bottom-2 left-2 text-white text-lg font-bold">All Apparel</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Carousel: New Arrivals (Screenshot 212916.jpg) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-2xl font-bold text-center mb-8">NEW ARRIVALS</h2>
+        <div class="relative">
+            <!-- Navigation Arrows (Absolute positioning for a carousel effect) -->
+            <button aria-label="Previous Products" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg z-10 hidden md:block" onclick="scrollCarousel('new-arrivals', -300)">
+                <i data-lucide="chevron-left" class="w-6 h-6 text-gray-700"></i>
+            </button>
+            <button aria-label="Next Products" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg z-10 hidden md:block" onclick="scrollCarousel('new-arrivals', 300)">
+                <i data-lucide="chevron-right" class="w-6 h-6 text-gray-700"></i>
+            </button>
+
+            <!-- Product Cards Container -->
+            <div id="new-arrivals" class="product-carousel flex overflow-x-scroll space-x-4 pb-4">
+                <!-- Card 1 (Black Full Sleeve) -->
+                <div class="product-card-container">
+                    <div class="w-full bg-white rounded-lg group">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/300x400/1c1c1c/fff?text=T-Shirt+1" alt="Black Rewind Mode Graphic" class="w-full object-cover rounded-lg">
+                            <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">BUY 2 FOR ₹999</div>
+                            <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs font-bold px-2 py-0.5 rounded-md flex items-center space-x-1">
+                                <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i><span>4.4</span>
+                            </div>
+                            <button aria-label="Add to Wishlist" class="absolute top-2 right-2 p-1 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="heart" class="w-5 h-5 text-gray-700"></i></button>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-700">Bewakoof&reg;</p>
+                        <p class="text-sm font-semibold truncate">Men's Jet Black Rewind Mode Graphic Pri...</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-sm font-bold text-gray-900">₹599</span>
+                            <span class="text-xs text-gray-500 line-through">₹1599</span>
+                            <span class="text-xs font-semibold text-green-600">64% Off</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 (Red Full Sleeve) -->
+                <div class="product-card-container">
+                    <div class="w-full bg-white rounded-lg group">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/300x400/cc0000/fff?text=T-Shirt+2" alt="Red Bold Freedom Graphic" class="w-full object-cover rounded-lg">
+                            <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">BUY 2 FOR ₹999</div>
+                            <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs font-bold px-2 py-0.5 rounded-md flex items-center space-x-1">
+                                <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i><span>4.5</span>
+                            </div>
+                            <button aria-label="Add to Wishlist" class="absolute top-2 right-2 p-1 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="heart" class="w-5 h-5 text-gray-700"></i></button>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-700">Bewakoof&reg;</p>
+                        <p class="text-sm font-semibold truncate">Men's Bold Red Freedom Graphic Printed...</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-sm font-bold text-gray-900">₹599</span>
+                            <span class="text-xs text-gray-500 line-through">₹1599</span>
+                            <span class="text-xs font-semibold text-green-600">66% Off</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 (Pink Off-Road T-Shirt) -->
+                <div class="product-card-container">
+                    <div class="w-full bg-white rounded-lg group">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/300x400/ffc0cb/333333?text=T-Shirt+3" alt="Pink Off Road Graphic" class="w-full object-cover rounded-lg">
+                            <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">BUY 2 FOR ₹999</div>
+                            <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs font-bold px-2 py-0.5 rounded-md flex items-center space-x-1">
+                                <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i><span>4.4</span>
+                            </div>
+                            <button aria-label="Add to Wishlist" class="absolute top-2 right-2 p-1 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="heart" class="w-5 h-5 text-gray-700"></i></button>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-700">Bewakoof&reg;</p>
+                        <p class="text-sm font-semibold truncate">Men's Pink 4X4 Off Road Graphic Printed...</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-sm font-bold text-gray-900">₹499</span>
+                            <span class="text-xs text-gray-500 line-through">₹1299</span>
+                            <span class="text-xs font-semibold text-green-600">61% Off</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 (Vapour Blue T-Shirt) -->
+                <div class="product-card-container">
+                    <div class="w-full bg-white rounded-lg group">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/300x400/eeeeee/333333?text=T-Shirt+4" alt="Vapour Blue Surviving Graphic" class="w-full object-cover rounded-lg">
+                            <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">BUY 2 FOR ₹999</div>
+                            <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs font-bold px-2 py-0.5 rounded-md flex items-center space-x-1">
+                                <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i><span>4.4</span>
+                            </div>
+                            <button aria-label="Add to Wishlist" class="absolute top-2 right-2 p-1 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="heart" class="w-5 h-5 text-gray-700"></i></button>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-700">Bewakoof&reg;</p>
+                        <p class="text-sm font-semibold truncate">Men's Vapour Blue Surviving Graphic Pr...</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-sm font-bold text-gray-900">₹599</span>
+                            <span class="text-xs text-gray-500 line-through">₹1699</span>
+                            <span class="text-xs font-semibold text-green-600">64% Off</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 (Black T-Shirt) -->
+                <div class="product-card-container">
+                    <div class="w-full bg-white rounded-lg group">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/300x400/1c1c1c/fff?text=T-Shirt+5" alt="Black Jet Freedom Graphic" class="w-full object-cover rounded-lg">
+                            <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">BUY 2 FOR ₹999</div>
+                            <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs font-bold px-2 py-0.5 rounded-md flex items-center space-x-1">
+                                <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i><span>4.4</span>
+                            </div>
+                            <button aria-label="Add to Wishlist" class="absolute top-2 right-2 p-1 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="heart" class="w-5 h-5 text-gray-700"></i></button>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-700">Bewakoof&reg;</p>
+                        <p class="text-sm font-semibold truncate">Men's Jet Black Freedom Graphic Printed...</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-sm font-bold text-gray-900">₹599</span>
+                            <span class="text-xs text-gray-500 line-through">₹1599</span>
+                            <span class="text-xs font-semibold text-green-600">66% Off</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-6">
+                <a href="#" class="text-sm font-semibold text-gray-700 hover:text-gray-900 underline">Explore All</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Carousel: Buy 2 Oversized T-Shirts (Screenshot 212945.jpg) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-2xl font-bold text-center mb-8">BUY 2 OVERSIZED T-SHIRTS AT ₹999</h2>
+        <div class="relative">
+             <!-- Navigation Arrows (Absolute positioning for a carousel effect) -->
+            <button aria-label="Previous Products" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg z-10 hidden md:block" onclick="scrollCarousel('oversized-shirts', -300)">
+                <i data-lucide="chevron-left" class="w-6 h-6 text-gray-700"></i>
+            </button>
+            <button aria-label="Next Products" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg z-10 hidden md:block" onclick="scrollCarousel('oversized-shirts', 300)">
+                <i data-lucide="chevron-right" class="w-6 h-6 text-gray-700"></i>
+            </button>
+
+            <!-- Product Cards Container -->
+            <div id="oversized-shirts" class="product-carousel flex overflow-x-scroll space-x-4 pb-4">
+                <!-- Card 1 (Black Guardian Wings) -->
+                <div class="product-card-container">
+                    <div class="w-full bg-white rounded-lg group">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/300x400/1a1a1a/ffffff?text=Oversized+Tee+1" alt="Black Guardian Wings Graphic" class="w-full object-cover rounded-lg">
+                            <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">BUY 2 FOR ₹999</div>
+                            <button aria-label="Add to Wishlist" class="absolute top-2 right-2 p-1 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="heart" class="w-5 h-5 text-gray-700"></i></button>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-700">Bewakoof&reg;</p>
+                        <p class="text-sm font-semibold truncate">Men's Black Guardian Wings Graphic Pr...</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-sm font-bold text-gray-900">₹599</span>
+                            <span class="text-xs text-gray-500 line-through">₹1499</span>
+                            <span class="text-xs font-semibold text-green-600">60% Off</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 (Brown Oversized) -->
+                <div class="product-card-container">
+                    <div class="w-full bg-white rounded-lg group">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/300x400/d2b48c/333333?text=Oversized+Tee+2" alt="Brown Oversized T-shirt" class="w-full object-cover rounded-lg">
+                            <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">BUY 2 FOR ₹999</div>
+                            <button aria-label="Add to Wishlist" class="absolute top-2 right-2 p-1 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="heart" class="w-5 h-5 text-gray-700"></i></button>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-700">Bewakoof&reg;</p>
+                        <p class="text-sm font-semibold truncate">Men's Brown Oversized T-shirt</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-sm font-bold text-gray-900">₹599</span>
+                            <span class="text-xs text-gray-500 line-through">₹1299</span>
+                            <span class="text-xs font-semibold text-green-600">53% Off</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 (Red Oversized Full Sleeve) -->
+                <div class="product-card-container">
+                    <div class="w-full bg-white rounded-lg group">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/300x400/cc0000/fff?text=Oversized+Tee+3" alt="Red Oversized T-shirt" class="w-full object-cover rounded-lg">
+                            <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">BUY 2 FOR ₹999</div>
+                            <button aria-label="Add to Wishlist" class="absolute top-2 right-2 p-1 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="heart" class="w-5 h-5 text-gray-700"></i></button>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-700">Bewakoof&reg;</p>
+                        <p class="text-sm font-semibold truncate">Men's Red Oversized T-shirt</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-sm font-bold text-gray-900">₹699</span>
+                            <span class="text-xs text-gray-500 line-through">₹1299</span>
+                            <span class="text-xs font-semibold text-green-600">46% Off</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 (Black Batman Oversized) -->
+                <div class="product-card-container">
+                    <div class="w-full bg-white rounded-lg group">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/300x400/1a1a1a/fff?text=Oversized+Tee+4" alt="Black Batman Outline Logo" class="w-full object-cover rounded-lg">
+                            <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">BUY 2 FOR ₹999</div>
+                             <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs font-bold px-2 py-0.5 rounded-md flex items-center space-x-1">
+                                <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i><span>4.3</span>
+                            </div>
+                            <button aria-label="Add to Wishlist" class="absolute top-2 right-2 p-1 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="heart" class="w-5 h-5 text-gray-700"></i></button>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-700">Bewakoof&reg;</p>
+                        <p class="text-sm font-semibold truncate">Men's Black Batman Outline Logo Graphic...</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-sm font-bold text-gray-900">₹699</span>
+                            <span class="text-xs text-gray-500 line-through">₹1299</span>
+                            <span class="text-xs font-semibold text-green-600">46% Off</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 (Tie-Dye Oversized) -->
+                <div class="product-card-container">
+                    <div class="w-full bg-white rounded-lg group">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/300x400/5c3317/fff?text=Oversized+Tee+5" alt="Black & Orange Tie & Dye" class="w-full object-cover rounded-lg">
+                            <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">BUY 2 FOR ₹999</div>
+                            <button aria-label="Add to Wishlist" class="absolute top-2 right-2 p-1 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="heart" class="w-5 h-5 text-gray-700"></i></button>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-700">Bewakoof&reg;</p>
+                        <p class="text-sm font-semibold truncate">Men's Black & Orange Tie & Dye Oversize...</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-sm font-bold text-gray-900">₹699</span>
+                            <span class="text-xs text-gray-500 line-through">₹1499</span>
+                            <span class="text-xs font-semibold text-green-600">53% Off</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Screenshot 213006.png) -->
+    <footer class="dark-footer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
+            <!-- Top Section: Logo and Signup -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <!-- Col 1: Customer Service -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4 logo-text">BEWAKOOF&reg;</h4>
+                    <h5 class="text-sm font-semibold text-white mb-4">CUSTOMER SERVICE</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Return Order</a></li>
+                        <li><a href="#">Cancel Order</a></li>
+                    </ul>
+                    <div class="mt-4 space-y-2 text-sm">
+                        <p class="flex items-center"><i data-lucide="refresh-cw" class="w-4 h-4 mr-2"></i> 15 Days Return Policy*</p>
+                        <p class="flex items-center"><i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Cash On Delivery*</p>
+                    </div>
+                </div>
+
+                <!-- Col 2: Company & App Download -->
+                <div>
+                    <h5 class="text-sm font-semibold text-white mb-4">COMPANY</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">We Are Hiring</a></li>
+                    </ul>
+
+                    <h5 class="text-sm font-semibold text-white mt-6 mb-4">DOWNLOAD THE APP</h5>
+                    <div class="flex space-x-2">
+                        <a href="#"><img src="https://placehold.co/120x40/000/fff?text=Google+Play" alt="Google Play" class="h-10 rounded-md"></a>
+                        <a href="#"><img src="https://placehold.co/120x40/000/fff?text=App+Store" alt="App Store" class="h-10 rounded-md"></a>
+                    </div>
+                </div>
+
+                <!-- Col 3: Connect With Us & Payment -->
+                <div>
+                    <h5 class="text-sm font-semibold text-white mb-4">CONNECT WITH US</h5>
+                    <div class="space-y-1 text-sm">
+                        <p class="flex items-center"><i data-lucide="facebook" class="w-4 h-4 mr-2"></i> 4.7M People like this</p>
+                        <p class="flex items-center"><i data-lucide="twitter" class="w-4 h-4 mr-2"></i> 1M People like this</p>
+                    </div>
+                    <div class="flex space-x-3 mt-4">
+                        <a href="#" aria-label="Pinterest"><i data-lucide="pinterest" class="w-5 h-5"></i></a>
+                        <a href="#" aria-label="Instagram"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    </div>
+
+                    <h5 class="text-sm font-semibold text-white mt-6 mb-4">100% SECURE PAYMENT</h5>
+                    <div class="flex flex-wrap gap-2">
+                        <!-- Placeholder Payment Icons -->
+                        <img src="https://placehold.co/40x25/fff/000?text=Visa" alt="Visa" class="h-6">
+                        <img src="https://placehold.co/40x25/fff/000?text=Master" alt="MasterCard" class="h-6">
+                        <img src="https://placehold.co/40x25/fff/000?text=Amex" alt="Amex" class="h-6">
+                        <img src="https://placehold.co/40x25/fff/000?text=Paytm" alt="Paytm" class="h-6">
+                    </div>
+                </div>
+
+                <!-- Col 4: Keep Up To Date -->
+                <div>
+                    <h5 class="text-sm font-semibold text-white mb-4">KEEP UP TO DATE</h5>
+                    <div class="flex">
+                        <input type="email" placeholder="Enter Email Id:" class="w-full px-3 py-2 text-sm text-gray-900 rounded-l-md focus:outline-none" aria-label="Email subscription">
+                        <button class="bg-yellow-400 text-black font-bold px-4 py-2 text-sm rounded-r-md hover:bg-yellow-500 transition-colors">SUBSCRIBE</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-10 border-gray-800">
+
+            <!-- Bottom Section: Category Links -->
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8 text-sm">
+                <!-- Men's Clothing -->
+                <div>
+                    <h5 class="font-bold text-white mb-4">Men's Clothing</h5>
+                    <ul class="space-y-1">
+                        <li><a href="#">Top Wear</a></li>
+                        <li><a href="#">Men's New Arrivals</a></li>
+                        <li><a href="#">Men's T-Shirts</a></li>
+                        <li><a href="#">Men's Hoodies & Sweatshirts</a></li>
+                        <li><a href="#">Oversized T-Shirts for Men</a></li>
+                        <li><a href="#">Men's Long Sleeve T-Shirts</a></li>
+                        <li><a href="#">Men's White T-shirts</a></li>
+                        <li><a href="#">Men's Crew Neck T-shirts</a></li>
+                        <li><a href="#">Men's Half Sleeve T-shirts</a></li>
+                        <li><a href="#">Men's Printed T-shirts</a></li>
+                        <li><a href="#">Men's Plain T-shirts</a></li>
+                        <li><a href="#">Men's Plus Size T-shirts</a></li>
+                    </ul>
+                </div>
+
+                <!-- Women's Clothing -->
+                <div>
+                    <h5 class="font-bold text-white mb-4">Women's Clothing</h5>
+                    <ul class="space-y-1">
+                        <li><a href="#">Women's Top Wear</a></li>
+                        <li><a href="#">Women's New Arrivals</a></li>
+                        <li><a href="#">Women's T-Shirts</a></li>
+                        <li><a href="#">Women's Fashion Tops</a></li>
+                        <li><a href="#">Women's Loose T-shirts</a></li>
+                        <li><a href="#">Women's Tank Tops</a></li>
+                        <li><a href="#">Women's Hoodies & Sweatshirts</a></li>
+                        <li><a href="#">Women's Dresses</a></li>
+                        <li><a href="#">Women's 3/4 Sleeve T-Shirts</a></li>
+                        <li><a href="#">Women's Kurtis</a></li>
+                        <li><a href="#">Women's Combo T-Shirts</a></li>
+                        <li><a href="#">Women's Nightwear</a></li>
+                    </ul>
+                </div>
+
+                <!-- Mobile Covers & Quick Links -->
+                <div>
+                    <h5 class="font-bold text-white mb-4">Mobile Covers</h5>
+                    <ul class="space-y-1">
+                        <li><a href="#">Apple</a></li>
+                        <li><a href="#">Realme</a></li>
+                        <li><a href="#">Samsung</a></li>
+                        <li><a href="#">Xiaomi</a></li>
+                        <li><a href="#">Oneplus</a></li>
+                        <li><a href="#">Vivo</a></li>
+                        <li><a href="#">Oppo</a></li>
+                        <li><a href="#">Poco</a></li>
+                        <li><a href="#">Anime Mobile Covers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links & Ads -->
+                <div class="space-y-4">
+                    <p class="text-lg font-bold text-green-500">FANBOOK</p>
+                    <p class="text-lg font-bold text-green-500">OFFERS</p>
+                    <p class="text-lg font-bold text-green-500">SITEMAP</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for smooth scrolling carousel -->
+    <script>
+        // Function to scroll the carousel horizontally
+        function scrollCarousel(id, amount) {
+            const carousel = document.getElementById(id);
+            if (carousel) {
+                carousel.scrollBy({
+                    left: amount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
