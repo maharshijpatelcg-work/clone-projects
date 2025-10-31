@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRED pay - Make every payment count</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 2rem;
+            background: radial-gradient(ellipse at bottom, #1a1a1a 0%, #000 100%);
+        }
+
+        .logo {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            width: 80px;
+            height: auto;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title .highlight {
+            color: #d4ff00;
+            font-weight: 600;
+            display: block;
+        }
+
+        .curved-line {
+            width: 100%;
+            max-width: 1200px;
+            height: 200px;
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        .curved-line svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Statement Section */
+        .statement-section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .statement-content h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .statement-content p {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #aaa;
+        }
+
+        /* Feature Section */
+        .feature-section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            align-items: center;
+        }
+
+        .feature-phone {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .feature-text h3 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .feature-text .highlight {
+            color: #00ff88;
+            font-style: italic;
+        }
+
+        .feature-text p {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+            color: #aaa;
+        }
+
+        /* Pay Section */
+        .pay-section {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+        }
+
+        .pay-section .feature-text .highlight {
+            color: #ff006e;
+        }
+
+        /* Rewards Section */
+        .rewards-section {
+            background: linear-gradient(180deg, #000 0%, #0a3d2e 50%, #000 100%);
+        }
+
+        .rewards-section .feature-text .highlight {
+            color: #00ff88;
+        }
+
+        .rewards-amount {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #00ff88;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .timeline-item {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            position: relative;
+        }
+
+        .timeline-item.active {
+            background: #00ff88;
+        }
+
+        .timeline-item.danger {
+            background: #ff0000;
+        }
+
+        .timeline-connector {
+            width: 60px;
+            height: 2px;
+            background: #333;
+        }
+
+        .timeline-text {
+            text-align: center;
+            margin-top: 3rem;
+            max-width: 600px;
+        }
+
+        .timeline-text p {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+            color: #aaa;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin: 2rem 0 1rem;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .timeline-subtitle {
+            color: #00ff88;
+            font-style: italic;
+        }
+
+        /* Security Section */
+        .security-section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .security-item h4 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .security-item p {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+            color: #aaa;
+        }
+
+        .meet-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin: 4rem 0 3rem;
+            font-weight: 300;
+        }
+
+        /* Skins Section */
+        .skins-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .skin-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .skin-name {
+            color: #6b8aff;
+            font-style: italic;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .skins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            max-width: 800px;
+        }
+
+        .skin-item {
+            width: 100%;
+            aspect-ratio: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Perks Section */
+        .perks-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .perks-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .perks-highlight {
+            color: #ff6b9d;
+        }
+
+        /* Cashback Section */
+        .cashback-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, #000 0%, #1a3d1a 50%, #000 100%);
+        }
+
+        .cashback-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .cashback-ticket {
+            background: #6b8aff;
+            padding: 1.5rem 3rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 600;
+        }
+
+        .download-btn {
+            background: #00ff88;
+            color: #000;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid #00ff88;
+        }
+
+        .footer-title {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .footer-highlight {
+            color: #00ff88;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #00ff88;
+        }
+
+        .footer-copy {
+            margin-top: 2rem;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .timeline {
+                gap: 1rem;
+            }
+
+            .timeline-connector {
+                width: 30px;
+            }
+
+            .timeline-item {
+                width: 60px;
+                height: 60px;
+            }
+
+            .logo {
+                width: 60px;
+                top: 1rem;
+                left: 1rem;
+            }
+        }
+
+        /* Image placeholders */
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+        }
+
+        .phone-mockup {
+            width: 100%;
+            border: 3px solid #333;
+            border-radius: 30px;
+            overflow: hidden;
+            background: #000;
+            aspect-ratio: 9/19;
+        }
+
+        .marquee {
+            background: #00ff88;
+            color: #000;
+            padding: 0.5rem 0;
+            overflow: hidden;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .marquee-content {
+            display: flex;
+            animation: scroll 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-content span {
+            padding: 0 2rem;
+            font-weight: 600;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="cred.png" alt="CRED" class="logo">
+        <h1 class="hero-title">
+            <span class="highlight">CRED pay</span>
+            has arrived
+        </h1>
+        <div class="curved-line">
+            <img src="./cred pay has arrived.webp" alt="">
+            <!-- <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0 100 Q 600 0 1200 100" stroke="#d4ff00" stroke-width="2" fill="none"/>
+            </svg> -->
+        </div>
+    </section>
+
+    <!-- Statement Section -->
+    <section class="statement-section">
+        <div class="statement-content">
+            <h2>make a statement<br>every time you pay</h2>
+            <p>
+                with CRED pay, you can pay rent, utility bills, education fees, insurance premiums, and even shop at your favourite stores. all while being rewarded for spending responsibly.
+            </p>
+        </div>
+    </section>
+
+    <!-- Scan QR Section -->
+    <section class="feature-section">
+        <div class="feature-grid">
+            <div class="feature-phone">
+                <div class="phone-mockup">
+                    <img src="./Scan QR.png" alt="Scan QR" class="img-placeholder">
+                </div>
+            </div>
+            <div class="feature-text">
+                <h3><span class="highlight">scan</span> and QR</h3>
+                <p>
+                    ditch the old method, simply scan QR<br>
+                    and make your on-spot.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pay Instantly Section -->
+    <section class="feature-section pay-section">
+        <div class="feature-grid">
+            <div class="feature-text">
+                <h3><span class="highlight">pay</span><br>instantly</h3>
+                <p>
+                    simply add beneficiary or simply, you're never just<br>
+                    two chances to securely go up.
+                </p>
+            </div>
+            <div class="feature-phone">
+                <div class="phone-mockup">
+                    <img src="./Pay Instantly.png" alt="Pay Instantly" class="img-placeholder">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rewards Section -->
+    <section class="feature-section rewards-section">
+        <div class="feature-grid">
+            <div class="feature-phone">
+                <div class="phone-mockup">
+                    <img src="rewards.png" alt="Rewards" class="img-placeholder">
+                </div>
+            </div>
+            <div class="feature-text">
+                <h3><span class="highlight">earn</span><br>assured<br>rewards</h3>
+                <p class="rewards-amount">₹3,682.56</p>
+                <p>
+                    get rewarded every time you pay using CRED pay. cashback, rewards, exclusive deals - it's all waiting for you.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="timeline">
+            <div class="timeline-item"><img src="icon1.png" alt="Step 1" style="width:40px"></div>
+            <div class="timeline-connector"></div>
+            <div class="timeline-item"><img src="icon2.jpeg" alt="Step 2" style="width:40px"></div>
+            <div class="timeline-connector"></div>
+            <div class="timeline-item active"><img src="icon3.png" alt="Step 3" style="width:40px"></div>
+            <div class="timeline-connector"></div>
+            <div class="timeline-item danger"><img src="icon4.jpeg" alt="Step 4" style="width:40px"></div>
+            <div class="timeline-connector"></div>
+            <div class="timeline-item"><img src="icon5.png" alt="Step 5" style="width:40px"></div>
+        </div>
+        <div class="timeline-text">
+            <p>
+                checking in hand someone else.<br>
+                for you, it's as easy as picking your favourite<br>
+                flavour of ice cream. CRED pay just a tap away,<br>
+                and ideally 30 swipes is it.
+            </p>
+            <h2 class="timeline-title">
+                on CRED pay,<br>
+                <span class="timeline-subtitle">security is first.<br>and second.</span>
+            </h2>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section class="security-section">
+        <h2 class="meet-title">meet your skin</h2>
+        <div class="security-grid">
+            <div class="security-item">
+                <h4>switch to anonymity.<br>choose an ultra UPI ID.</h4>
+                <p>
+                    limit your navigation, deeds, too.<br>
+                    or use your real name. it's all safe here.
+                </p>
+            </div>
+            <div class="security-item">
+                <h4>your payments come<br>with a safety net.</h4>
+                <p>
+                    in the unlikely event it's disputed or<br>
+                    payment fails, get your money back<br>
+                    instantly. no questions asked.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skins Section -->
+    <section class="skins-section">
+        <div class="phone-mockup" style="width: 300px;height: 400px; margin: 0 auto 3rem;">
+            <img src="./image.png" alt="Stellar Skin" class="img-placeholder">
+        </div>
+        <h2 class="skin-title">
+            <span class="skin-name">STELLAR</span>
+        </h2>
+        
+        <h2 class="skin-title" style="margin-top: 4rem;">
+            <span class="skin-name" style="color: #6b8aff;">BEBOLD</span>
+            flairs
+        </h2>
+        <div class="skins-grid">
+            <div class="skin-item"><img src="skin1.webp" alt="Skin 1" class="img-placeholder"></div>
+        </div>
+        
+        <h2 class="skin-title" style="margin-top: 4rem;">designed to<br>be shown off</h2>
+        <div class="skins-grid" style="margin-top: 3rem;">
+            <p>redeem coins to collect flains pin them <br>to your scanner.flaunt your good <br>taste.</p>
+        </div>
+    </section>
+
+    <!-- Perks Section -->
+    <section class="perks-section">
+        <h2 class="perks-title">
+            your perks<br>
+            extend online.
+        </h2>
+        <img src="perks.WEBP" alt="Perks" style="max-width: 600px; width: 100%; margin: 2rem 0;">
+        <p style="color: #aaa; max-width: 600px; line-height: 1.8;">
+            select CRED pay while checking out from your favourite onlline stores the. exclusive deals, instant cashback, premium rewards.<br>
+            shopping has never been this rewarding.
+        </p>
+    </section>
+
+    <!-- Cashback Section -->
+    <section class="cashback-section">
+        <h2 class="cashback-title">
+            some hello to boosia
+        </h2>
+        <p>but skip the small talk.unlock boosts and get 120 minutes <br>
+            to shop at up to 50% less on your favourite brands.
+        </p>
+        
+        <div style="margin: 4rem 0;">
+            <div class="cashback-ticket">
+                <img src="./Ticket.webp" alt="Ticket" style="width: 500px; vertical-align: middle; margin-right: 1rem;">
+            </div>
+        </div>
+        
+        <h2 class="cashback-title">100% cashback.<br>every hour.</h2>
+        <p style="color: #aaa; margin: 1rem 0;">ONLY VIA SCAN & PAY</p>
+        <a href="./pay1-learn.html">
+        <button class="download-btn">Know More --></button>
+        </a>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h2 class="footer-title">
+            experience payments for the<br>
+            top 1%. access <span class="footer-highlight">CRED pay</span> on the<br>
+            app.
+        </h2>
+        <div class="footer-links">
+            <a href="#">privacy policy</a>
+            <a href="#">terms and conditions</a>
+            <a href="#">security</a>
+        </div>
+        <p class="footer-copy">
+            copyright © 2025 by Dreamplug Technologies Pvt. Ltd.<br>
+            All rights reserved.
+        </p>
+            <main class="close-button">
+                <a href="./index.html">
+    <button class="close-btn" onclick="closeMenu()">CLOSE</button>
+    <!-- &times; -->
+</a>
+    </footer>
+    
+
+    <!-- Marquee -->
+    <div class="marquee">
+        <div class="marquee-content">
+            <span>CRED • DOWNLOAD • CRED • DOWNLOAD • CRED • DOWNLOAD • CRED • DOWNLOAD • </span>
+            <span>CRED • DOWNLOAD • CRED • DOWNLOAD • CRED • DOWNLOAD • CRED • DOWNLOAD • </span>
+        </div>
+    </div>
+    
+</body>
+</html>

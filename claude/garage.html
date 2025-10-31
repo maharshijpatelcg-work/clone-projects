@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRED Garage Clone</title>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(5px);
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 35px;
+  height: 35px;
+}
+
+.logo span {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.navbar nav a {
+  text-decoration: none;
+  color: #ccc;
+  margin-left: 25px;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.navbar nav a:hover {
+  color: #fff;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.hero-content {
+  z-index: 1;
+  padding: 0 10%;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.hero-content p {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.hero-content button {
+  margin-top: 30px;
+  padding: 12px 30px;
+  background: #fff;
+  color: #000;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-content button:hover {
+  background: #ddd;
+}
+
+/* Feature Section */
+.feature {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 100px 8%;
+  background: #0a0a0a;
+  gap: 40px;
+}
+
+.feature-text {
+  flex: 1 1 300px;
+}
+
+.feature-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.feature-text p {
+  color: #aaa;
+  line-height: 1.6;
+}
+
+.feature-img img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+}
+
+/* Showcase Section */
+.showcase {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 100px 8%;
+  background: #000;
+}
+
+.showcase-card {
+  width: 300px;
+  text-align: center;
+}
+
+.showcase-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.showcase-card h3 {
+  margin-top: 15px;
+  font-size: 1.2rem;
+}
+
+.showcase-card p {
+  color: #aaa;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+/* CTA Section */
+.cta {
+  text-align: center;
+  padding: 100px 5%;
+  background: #0a0a0a;
+}
+
+.cta h2 {
+  font-size: 2rem;
+}
+
+.cta p {
+  color: #ccc;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.cta-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cta-buttons img {
+  width: 150px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cta-buttons img:hover {
+  opacity: 0.8;
+}
+
+/* Footer */
+footer {
+  background: #111;
+  padding: 60px 8% 30px;
+  color: #999;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-left img {
+  width: 40px;
+  height: 40px;
+}
+
+.footer-left p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-links h4 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  display: block;
+  text-decoration: none;
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .feature {
+    flex-direction: column;
+    text-align: center;
+  }
+  .navbar nav {
+    display: none;
+  }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="cred.png" alt="CRED Logo">
+      <span>CRED</span>
+    </div>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./garage.html">Garage</a>
+      <a href="#">Mint</a>
+      <a href="./money.html">Money</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="garage.png" alt="Garage Hero" class="hero-bg">
+    <!-- <div class="hero-content">
+      <p>Experience the future of automotive ownership.</p>
+      <button>Explore Now</button>
+    </div> -->
+  </section>
+
+  <!-- Section 2: Feature Highlight -->
+  <section class="feature">
+    <div class="feature-text">
+      <h2>Unlock the best car experiences.</h2>
+      <p>Get exclusive access to premium vehicles, services, and rewards curated for CRED members.</p>
+    </div>
+    <div class="feature-img">
+      <img src="car.png" alt="Car Showcase">
+    </div>
+  </section>
+
+  <!-- Section 3: Showcase -->
+  <section class="showcase">
+    <div class="showcase-card">
+      <img src="car1.jpeg" alt="Luxury Car">
+      <h3>Own with Ease</h3>
+      <p>Finance your dream car through seamless partnerships and flexible options.</p>
+    </div>
+    <div class="showcase-card">
+      <img src="car2.jpeg" alt="Car Service">
+      <h3>Service Smart</h3>
+      <p>Track, schedule, and maintain your car effortlessly — all in one place.</p>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="cta">
+    <h2>Unlock the future of driving.</h2>
+    <p>Download the CRED app and experience Garage now.</p>
+    <div class="cta-buttons">
+      <img src="play store.png" alt="Play Store">
+      <img src="appstore.png" alt="App Store">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-left">
+        <img src="cred.png" alt="CRED Logo">
+        <p>crafted for the creditworthy.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Products</h4>
+          <a href="#">CRED Pay</a>
+          <a href="#">Garage</a>
+          <a href="#">Mint</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <a href="#">FAQs</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 CRED. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

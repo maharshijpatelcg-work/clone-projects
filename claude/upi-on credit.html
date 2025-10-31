@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRED - Your credit card is now accepted everywhere</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Hero Section - Credit Card Accepted */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 2rem;
+            background: #000;
+        }
+
+        .logo {
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: auto;
+        }
+
+        .hero-phone {
+            max-width: 300px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            text-align: center;
+            line-height: 1.2;
+            max-width: 600px;
+        }
+
+        /* RuPay UPI Section */
+        .rupay-section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            background: #000;
+        }
+
+        .rupay-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            align-items: center;
+        }
+
+        .rupay-text h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+        }
+
+        .rupay-info p {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        .activate-link {
+            color: #fff;
+            text-decoration: underline;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .activate-link:hover {
+            color: #00ff88;
+        }
+
+        .rupay-logo {
+            width: 120px;
+            margin-top: 2rem;
+        }
+
+        /* Scan QR Section - Light Background */
+        .scan-section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            background: #f5f5f5;
+            color: #000;
+        }
+
+        .scan-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            align-items: center;
+        }
+
+        .scan-text h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+        }
+
+        .scan-text p {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .phone-mockup {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        /* Know Your Cards Section */
+        .cards-section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            background: #f5f5f5;
+            color: #000;
+        }
+
+        .cards-title {
+            text-align: center;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        .cards-grid {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+        }
+
+        .feature-list {
+            max-width: 800px;
+            margin: 4rem auto 0;
+        }
+
+        .feature-item {
+            border-top: 1px solid #ddd;
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(0,0,0,0.02);
+        }
+
+        .feature-item h3 {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 600;
+        }
+
+        .feature-item p {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        /* Celebrate Section */
+        .celebrate-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            background: #f5f5f5;
+            color: #000;
+            text-align: center;
+        }
+
+        .celebrate-image {
+            max-width: 300px;
+            margin-bottom: 3rem;
+        }
+
+        .celebrate-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+        }
+
+        .celebrate-text {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+            color: #666;
+            max-width: 600px;
+        }
+
+        /* Pay via CRED UPI Section */
+        .cred-upi-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            background: #000;
+            text-align: center;
+            position: relative;
+        }
+
+        .glow-effects {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .glow-left, .glow-right {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,255,136,0.3) 0%, transparent 70%);
+        }
+
+        .glow-left {
+            left: -150px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .glow-right {
+            right: -150px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .upi-phone {
+            max-width: 300px;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .upi-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .become-member-btn {
+            background: #fff;
+            color: #000;
+            padding: 1rem 3rem;
+            border: none;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .become-member-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            background: #000;
+        }
+
+        .faq-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #333;
+            padding: 2rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-number {
+            font-size: 0.9rem;
+            color: #666;
+            margin-right: 2rem;
+        }
+
+        .faq-question h3 {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 400;
+            flex: 1;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: #666;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            padding: 4rem 2rem;
+            border-top: 1px solid #222;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-logo-section {
+            grid-column: span 1;
+        }
+
+        .footer-logo {
+            width: 120px;
+            margin-bottom: 2rem;
+        }
+
+        .security-badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .security-badge {
+            height: 30px;
+        }
+
+        .footer-section h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #00ff88;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #00ff88;
+        }
+
+        .footer-tagline {
+            margin-top: 2rem;
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .rupay-content,
+            .scan-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .scan-content {
+                grid-template-columns: 1fr;
+            }
+
+            .scan-content .phone-mockup {
+                order: -1;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-logo-section {
+                grid-column: span 1;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .faq-number {
+                margin-right: 1rem;
+            }
+
+            .feature-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        /* Image placeholder styles */
+        .img-placeholder {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Arrow icon */
+        .arrow-icon {
+            font-size: 2rem;
+            transform: rotate(-45deg);
+        }
+
+        /* Shopping bag icon */
+        .bag-icon {
+            font-size: 2rem;
+        }
+
+        /* Bars icon */
+        .bars-icon {
+            font-size: 2rem;
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .bar {
+            width: 4px;
+            height: 30px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section - Credit Card Accepted -->
+    <section class="hero">
+        <img src="cred1.png" alt="CRED" class="logo">
+        <img src="./Credit Card Phone.jpeg" alt="Credit Card Phone" class="hero-phone img-placeholder">
+        <h1 class="hero-title">
+            your credit card<br>
+            is now accepted<br>
+            everywhere
+        </h1>
+    </section>
+
+    <!-- RuPay UPI Section -->
+    <section class="rupay-section">
+        <div class="rupay-content">
+            <div class="rupay-text">
+                <h2>
+                    give your<br>
+                    RuPay credit<br>
+                    card the UPI<br>
+                    advantage
+                </h2>
+            </div>
+            <div class="rupay-info">
+                <p>
+                    activate UPI on your RuPay credit<br>
+                    card. pay on credit, wherever you<br>
+                    shop.
+                </p>
+                <a href="./index.html" class="activate-link">Activate now →</a>
+                <br>
+                <img src="rupay.png" alt="RuPay" class="rupay-logo img-placeholder">
+            </div>
+        </div>
+    </section>
+
+    <!-- Scan QR Section -->
+    <section class="scan-section">
+        <div class="scan-content">
+            <div class="scan-text">
+                <h2>
+                    scan any<br>
+                    QR and pay.<br>
+                    on credit.
+                </h2>
+                <p>
+                    reach your spend milestones faster,<br>
+                    and earn credit card rewards.
+                </p>
+            </div>
+            <div>scan-qr-phone
+                <img src="scan-qr-phone.png" alt="Scan QR Phone" class="phone-mockup img-placeholder">
+            </div>
+        </div>
+    </section>
+
+    <!-- Know Your Cards Section -->
+    <section class="cards-section">
+        <h2 class="cards-title">
+            know your cards.<br>
+            inside out.
+        </h2>
+        <div class="cards-grid">
+            <img src="cards-dashboard.png" alt="Cards Dashboard" style="width: 100%; max-width: 900px; margin: 0 auto; display: block;" class="img-placeholder">
+        </div>
+        <p class="subtitle">EVERYTHING YOU NEED. IN ONE PLACE.</p>
+
+        <div class="feature-list">
+            <div class="feature-item">
+                <div>
+                    <h3>track</h3>
+                    <p>track your spends, credit limit, bills,<br>and due dates.</p>
+                </div>
+                <div class="feature-icon arrow-icon">↗</div>
+            </div>
+
+            <div class="feature-item">
+                <div>
+                    <h3>savor</h3>
+                    <p>shop smarter by browsing card offers<br>& benefits.</p>
+                </div>
+                <div class="feature-icon bag-icon">🛍️</div>
+            </div>
+
+            <div class="feature-item">
+                <div>
+                    <h3>reflect</h3>
+                    <p>get insights on your spends and<br>access to monthly smart statements.</p>
+                </div>
+                <div class="feature-icon bars-icon">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Celebrate Section -->
+    <section class="celebrate-section">
+        <img src="celebrate-image.png" alt="Celebrate" class="celebrate-image img-placeholder">
+        <h2 class="celebrate-title">
+            twice the reasons<br>
+            to celebrate.
+        </h2>
+        <p class="celebrate-text">
+            earn reward points when you pay with a RuPay credit card<br>
+            & unlock member-exclusive rewards on CRED. déjà vu, for<br>
+            the rewarding feeling.
+        </p>
+    </section>
+
+    <!-- Pay via CRED UPI Section -->
+    <section class="cred-upi-section">
+        <div class="glow-effects">
+            <div class="glow-left"></div>
+            <div class="glow-right"></div>
+        </div>
+        <img src="upi-phone.png" alt="CRED UPI Phone" class="upi-phone img-placeholder">
+        <h2 class="upi-title">
+            pay via CRED UPI.<br>
+            on credit.
+        </h2>
+        <div>
+        <a href="./index.html">
+        <button class="become-member-btn">BECOME A MEMBER →</button>
+    </a>
+    </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="faq-title">
+            frequently<br>
+            asked questions
+        </h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span class="faq-number">01</span>
+                    <h3>how does RuPay credit card on UPI work?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span class="faq-number">02</span>
+                    <h3>does credit card on UPI work everywhere and on every card?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span class="faq-number">03</span>
+                    <h3>is it safe to use credit card on UPI?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span class="faq-number">04</span>
+                    <h3>how can i get a RuPay credit card if i don't have one?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span class="faq-number">05</span>
+                    <h3>how can i start using UPI on my RuPay credit card?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span class="faq-number">06</span>
+                    <h3>can i send money to friends using credit card on UPI?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span class="faq-number">07</span>
+                    <h3>which banks are currently live for credit card on UPI?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo-section">
+                <img src="cred1.png" alt="CRED" class="footer-logo img-placeholder">
+                <div class="security-badges">
+                    <img src="PCI DSS.png" alt="PCI DSS" class="security-badge img-placeholder">
+                    <img src="iso.png" alt="ISO" class="security-badge img-placeholder">
+                    <img src="ssl.png" alt="SSL" class="security-badge img-placeholder">
+                </div>
+                <p class="footer-tagline">
+                    <strong>complete security. no asterisks.</strong><br>
+                    <span style="color: #666; font-size: 0.9rem;">
+                        CRED encrypts all data and transactions to ensure a completely secure<br>
+                        experience for our members.
+                    </span>
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>products</h4>
+                <ul>
+                    <li><a href="#">CRED pay</a></li>
+                    <li><a href="#">credit score check</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>resources</h4>
+                <ul>
+                    <li><a href="https://cred.club/articleshttps://cred.club/articles">articles</a></li>
+                    <li><a href="https://engineering.cred.club/">tech blogs</a></li>
+                    <li><a href="https://cred.club/calculators">calculators</a></li>
+                    <li><a href="https://cred.club/credit-card-bill-payment-online/articles">credit card payment guide</a></li>
+                    <li><a href="https://cred.club/check-your-credit-score/articles">credit score guide</a></li>
+                    <li><a href="https://zfrmz.in/10ASsFdqjAnCiBMpakMX">Decempass (₹ndian) wallet refund form</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>CRED</h4>
+                <ul>
+                    <li><a href="https://cred.club/about">about</a></li>
+                    <li><a href="https://careers.cred.club/">careers</a></li>
+                    <li><a href="https://cred.club/ipl?source=footer">IPL</a></li>
+                    <li><a href="https://cred.club/customer-care">customer care</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>policy</h4>
+                <ul>
+                    <li><a href="https://cred.club/security">security</a></li>
+                    <li><a href="https://cred.club/transaction-and-user-verification-policy">transaction & user verification</a></li>
+                    <li><a href="https://cred.club/privacy#compliance-with-google-oauth-api-scopes">Google API disclosure</a></li>
+                    <li><a href="https://cred.club/upi-faqs">UPI faq & grievances</a></li>
+                    <li><a href="https://cred.club/equal-opportunity">equal opportunity policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>copyright © 2025-26 Dreamplug Technologies Pvt Ltd.</p>
+            <div class="footer-bottom-links">
+                <a href="https://cred.club/privacy">privacy policy</a>
+                <a href="https://cred.club/terms">terms and conditions</a>
+                <a href="https://cred.club/return-policy">returns and refund</a>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>

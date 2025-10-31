@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRED - A Reflection of Clarity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #0a1929 0%, #1a3a52 50%, #2d5a7b 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            border: 3px solid white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+        }
+
+        .logo-icon::before {
+            content: 'C';
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .close-btn {
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .close-btn::before,
+        .close-btn::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: white;
+        }
+
+        .close-btn::before {
+            transform: rotate(45deg);
+        }
+
+        .close-btn::after {
+            transform: rotate(-45deg);
+        }
+
+        /* Main Content */
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            width: 100%;
+            gap: 80px;
+            padding: 0 50px;
+        }
+
+        .card-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .card-wrapper {
+            position: relative;
+            transition: transform 0.5s ease;
+        }
+
+        .card-wrapper:hover {
+            transform: rotateY(5deg) rotateX(-5deg);
+        }
+
+        .card-image {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.5));
+            transition: filter 0.3s ease;
+        }
+
+        .card-image:hover {
+            filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.6));
+        }
+
+        .text-section {
+            flex: 1;
+            max-width: 550px;
+        }
+
+        .main-heading {
+            font-size: 64px;
+            font-weight: 300;
+            color: white;
+            line-height: 1.2;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 35px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            transform: translateX(5px);
+        }
+
+        .cta-button::after {
+            content: '→';
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .content {
+                gap: 50px;
+                padding: 0 30px;
+            }
+
+            .main-heading {
+                font-size: 52px;
+            }
+
+            .card-image {
+                max-width: 380px;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .content {
+                flex-direction: column;
+                gap: 60px;
+                padding-top: 120px;
+            }
+
+            .card-section {
+                order: 1;
+            }
+
+            .text-section {
+                order: 2;
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .main-heading {
+                font-size: 48px;
+            }
+
+            .card-image {
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px 25px;
+            }
+
+            .logo-icon {
+                width: 45px;
+                height: 45px;
+            }
+
+            .logo-icon::before {
+                font-size: 24px;
+            }
+
+            .logo-text {
+                font-size: 16px;
+            }
+
+            .close-btn {
+                width: 45px;
+                height: 45px;
+            }
+
+            .main-heading {
+                font-size: 40px;
+                margin-bottom: 40px;
+            }
+
+            .card-image {
+                max-width: 300px;
+            }
+
+            .cta-button {
+                padding: 16px 30px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .content {
+                padding: 100px 20px 40px;
+                gap: 40px;
+            }
+
+            .main-heading {
+                font-size: 32px;
+                letter-spacing: 1px;
+            }
+
+            .card-image {
+                max-width: 250px;
+            }
+
+            .cta-button {
+                padding: 14px 25px;
+                font-size: 12px;
+                gap: 10px;
+            }
+
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo-icon::before {
+                font-size: 22px;
+            }
+
+            .logo-text {
+                font-size: 14px;
+                letter-spacing: 2px;
+            }
+
+            .close-btn {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .text-section {
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo" onclick="window.location.href='#'">
+                <div class="logo-icon"></div>
+                <div class="logo-text">CRED</div>
+            </div>
+          <a href="./index.html">  <button class="close-btn" onclick="window.close()" aria-label="Close"></button></a>
+        </header>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="card-section">
+                <div class="card-wrapper">
+                    <img src="card-image.png" alt="IndusInd Bank CRED Card" class="card-image">
+                </div>
+            </div>
+
+            <div class="text-section">
+                <h1 class="main-heading">
+                    A REFLECTION<br>
+                    OF CLARITY.
+                </h1>
+               <a href="./index.html"> <button class="cta-button" onclick="window.location.href='#learn-more'">
+                    Learn More
+                </button></a>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

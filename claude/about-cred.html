@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About CRED</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .back-btn {
+            padding: 12px 28px;
+            border: 1px solid #000;
+            border-radius: 25px;
+            background: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 40px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 60px 40px 30px;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-logo-section {
+            flex: 1.5;
+        }
+
+        .footer-logo {
+            width: 100px;
+            height: 40px;
+            margin-bottom: 30px;
+        }
+
+        .payment-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .payment-icon {
+            width: 40px;
+            height: 25px;
+            background: #fff;
+            border-radius: 4px;
+        }
+
+        .security-text {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .security-desc {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .footer-section h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: lowercase;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .footer-bottom-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #fff;
+        }
+
+        /* Top Bar Links */
+        .top-bar {
+            background: #000;
+            padding: 15px 40px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .top-bar-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .top-bar-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            transition: opacity 0.3s;
+        }
+
+        .top-bar-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Credit Card Payment Section */
+        .payment-section {
+            background: #000;
+            color: #fff;
+            padding: 20px 40px;
+            margin-top: 80px;
+        }
+
+        .payment-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 12px;
+        }
+
+        .payment-content a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .back-btn {
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+
+            .main-content {
+                margin: 40px auto;
+                padding: 0 20px;
+            }
+
+            h1 {
+                font-size: 32px;
+                margin-bottom: 30px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            .footer {
+                padding: 40px 20px 20px;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .footer-section {
+                min-width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .top-bar {
+                padding: 10px 20px;
+            }
+
+            .top-bar-links {
+                gap: 20px;
+            }
+
+            .payment-section {
+                padding: 15px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .description {
+                font-size: 13px;
+            }
+
+            .top-bar-links {
+                gap: 15px;
+            }
+
+            .top-bar-links a {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Header -->
+    <header class="header">
+        <img src="cred.png" alt="CRED Logo" class="logo">
+        <a href="./index.html"><button class="back-btn" onclick="window.history.back()">Go back to website</button></a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>About CRED</h1>
+        <div class="description">
+            <p>CRED is a members-only club that rewards individuals for their timely credit card bill payments by providing them with exclusive offers and access to premium experiences. It is a platform that allows credit card users to manage multiple cards along with an analysis of their credit score. Members with a high Experian or CRIF score are eligible for rewards and cash-back upon payment of their credit card bills through the app. Among many of the features in the app are CRED's boutique collection of curated products, CRED escapes, CRED stash, rent payments with analysis of spend tracking and efficiency of usage of the card.</p>
+        </div>
+        <div class="description">
+            <p>CRED is also equipped with the CRED protect feature which is an AI backed system that keeps track of every single nuance of a credit card payment journey - right from due date reminders, spend patterns and other card usage statistics. Additionally, when a member makes a credit card payment through the app, the system generates a CRED coin. These coins can be used to unlock premium rewards. The app offers members with access to events, experiences, gift cards and upgrades from brands like Diesel, Cult.Fit, Myntra, Olive Bar & Kitchen among many more. How to apply for a CRED membership? Since CRED is only for a select few, you can apply for a membership by signing up with your full name and a valid phone number. A member on the app. Once your credit score is checked from Experian or CRIF, you will be informed if your credit score falls above the accepted eligibility score, you will be accepted as a member of CRED. Once you become a member, you will be able to access the curated set of exclusive rewards and privileges that are offered by CRED.</p>
+        </div>
+    </main>
+
+    <!-- Credit Card Payment Links -->
+    <div class="payment-section">
+        <div class="payment-content">
+            <span>credit card bill payments:</span>
+            <a href="./American Express.jpeg">American Express</a>
+            <span>|</span>
+            <a href="./Standard Chartered.png">Standard Chartered</a>
+            <span>|</span>
+            <a href="./HSBC.jpeg">HSBC</a>
+            <span>|</span>
+            <a href="#">ICICI</a>
+            <span>|</span>
+            <a href="#">IIBF</a>
+            <span>|</span>
+            <a href="#">AXIS</a>
+            <span>|</span>
+            <a href="#">RBL</a>
+            <span>|</span>
+            <a href="#">PNB</a>
+            <span>|</span>
+            <a href="#">YES Bank</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <!-- Logo and Security Section -->
+                <div class="footer-section footer-logo-section">
+                    <img src="cred.png" alt="CRED Logo" class="footer-logo">
+                    <div class="payment-icons">
+                        <img src="./Visa.png" alt="Visa" class="payment-icon">
+                        <img src="./Mastercard.png" alt="Mastercard" class="payment-icon">
+                        <img src="./RuPay1.png" alt="RuPay" class="payment-icon">
+                        <img src="./Amex.jpeg" alt="Amex" class="payment-icon">
+                        <img src="./Diners.jpeg" alt="Diners" class="payment-icon">
+                        <img src="./UPI.jpeg" alt="UPI" class="payment-icon">
+                    </div>
+                    <div class="security-text">complete security. no asterisks.</div>
+                    <div class="security-desc">CRED encrypts all data and transactions to ensure a completely secure experience for our members.</div>
+                </div>
+
+                <!-- Resources -->
+                <div class="footer-section">
+                    <h3>resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">articles</a></li>
+                        <li><a href="#">tech blog</a></li>
+                        <li><a href="#">notifications</a></li>
+                        <li><a href="#">credit cards</a></li>
+                        <li><a href="#">payment guide</a></li>
+                        <li><a href="#">credit score guide</a></li>
+                        <li><a href="#">Elearningspree</a></li>
+                        <li><a href="#">Explode wallet</a></li>
+                        <li><a href="#">refund form</a></li>
+                    </ul>
+                </div>
+
+                <!-- CRED -->
+                <div class="footer-section">
+                    <h3>CRED</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">about</a></li>
+                        <li><a href="#">careers</a></li>
+                        <li><a href="#">irl</a></li>
+                        <li><a href="#">customer care</a></li>
+                    </ul>
+                </div>
+
+                <!-- Policy -->
+                <div class="footer-section">
+                    <h3>policy</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">security</a></li>
+                        <li><a href="#">investor relations</a></li>
+                        <li><a href="#">transaction & user verification</a></li>
+                        <li><a href="#">google API disclosure</a></li>
+                        <li><a href="#">UPI Ts & Cs</a></li>
+                        <li><a href="#">grievances</a></li>
+                        <li><a href="#">equal opportunity policy</a></li>
+                        <li><a href="#">policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="copyright">copyright © 2020-25 Dreamplug Technologies Pvt Ltd.</div>
+                <ul class="footer-bottom-links">
+                    <li><a href="#">privacy policy</a></li>
+                    <li><a href="#">terms and conditions</a></li>
+                    <li><a href="#">returns and refund</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

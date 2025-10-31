@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRED pay - The Most Rewarding Payment System Ever</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: #d4ff00;
+        }
+
+        .logo-center {
+            width: 100px;
+            height: auto;
+        }
+
+        /* Hero Section - Yellow Card */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6rem 2rem 2rem;
+            background: #000;
+        }
+
+        .hero-card {
+            background: #d4ff00;
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 300;
+            line-height: 0.9;
+            color: #000;
+            font-style: italic;
+        }
+
+        .hero-title .the {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 400;
+            font-style: normal;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title .ever {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 600;
+            font-style: normal;
+            display: block;
+            margin-top: 1rem;
+            letter-spacing: 0.2em;
+        }
+
+        /* Winners Section */
+        .winners-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .winners-subtitle {
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+            letter-spacing: 0.3em;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .winners-title {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.1;
+            color: #d4ff00;
+            margin-bottom: 3rem;
+        }
+
+        .winners-description {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            line-height: 1.8;
+            max-width: 700px;
+            color: #fff;
+        }
+
+        /* Winners Gallery */
+        .winners-gallery {
+            margin-top: 4rem;
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .stripe-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                #ff0099,
+                #ff0099 40px,
+                #000 40px,
+                #000 80px
+            );
+            z-index: 0;
+        }
+
+        .winners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .winner-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .winner-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .winner-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        .winner-info {
+            padding: 1rem;
+            background: #fff;
+            color: #000;
+            text-align: left;
+        }
+
+        .winner-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .winner-location {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* FAQ Section - The Rules */
+        .faq-section {
+            min-height: 100vh;
+            padding: 6rem 2rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .faq-subtitle {
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+            letter-spacing: 0.3em;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .faq-title {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 300;
+            font-style: italic;
+            color: #d4ff00;
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #333;
+            padding: 2.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(212, 255, 0, 0.05);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .faq-question h3 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 300;
+            font-style: italic;
+            flex: 1;
+        }
+
+        .faq-number {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: #666;
+            font-weight: 400;
+        }
+
+        .faq-toggle {
+            font-size: 2rem;
+            color: #666;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding-left: 0;
+            margin-top: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            margin-top: 1.5rem;
+        }
+
+        .faq-answer p {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            line-height: 1.8;
+            color: #aaa;
+        }
+
+        /* Exclusive Section */
+        .exclusive-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .exclusive-icon {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .exclusive-subtitle {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .exclusive-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .exclusive-title .brand {
+            font-weight: 600;
+        }
+
+        .exclusive-title .exclusive {
+            font-style: italic;
+            font-weight: 300;
+            display: block;
+        }
+
+        .exclusive-description {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            line-height: 1.8;
+            max-width: 650px;
+            color: #aaa;
+            margin: 2rem auto;
+        }
+
+        .learn-more-btn {
+            background: #00ff88;
+            color: #000;
+            padding: 1rem 2.5rem;
+            border: none;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin-top: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .learn-more-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 2rem;
+            background: #000;
+            border-top: 1px solid #222;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-left h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.3;
+            max-width: 600px;
+        }
+
+        .footer-logo {
+            width: 120px;
+            height: auto;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #d4ff00;
+        }
+
+        .footer-copy {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        /* Marquee */
+        .marquee {
+            background: #00ff88;
+            color: #000;
+            padding: 0.8rem 0;
+            overflow: hidden;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        .marquee-content {
+            display: flex;
+            animation: scroll 25s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-content span {
+            padding: 0 3rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo-center {
+                width: 70px;
+            }
+
+            .hero-card {
+                padding: 3rem 2rem;
+                border-radius: 20px;
+            }
+
+            .winners-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .faq-item {
+                padding: 1.5rem 0;
+            }
+
+            .faq-question {
+                gap: 1rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+
+            .marquee {
+                padding: 0.6rem 0;
+            }
+        }
+
+        /* Image placeholder */
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Circle icon container */
+        .circle-icon {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, #00ff88 0%, #00cc6a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0, 255, 136, 0.3);
+        }
+
+        .circle-icon::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            border: 2px solid rgba(0, 255, 136, 0.2);
+            border-radius: 50%;
+        }
+
+        .icon-inner {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .check-icon, .cred-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+        }
+
+        .check-icon {
+            background: #000;
+            color: #00ff88;
+        }
+
+        .cred-icon {
+            background: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="#" class="nav-link">HOME</a>
+        <img src="" alt="CRED pay" class="logo-center img-placeholder">
+        <a href="#" class="nav-link">CRED.CLUB</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-card">
+            <h1 class="hero-title">
+                <span class="the">THE</span>
+                most<br>
+                rewarding<br>
+                payment<br>
+                system
+                <span class="ever">EVER</span>
+            </h1>
+        </div>
+    </section>
+
+    <!-- Winners Section -->
+    <section class="winners-section">
+        <p class="winners-subtitle">A WINNER EVERY HOUR</p>
+        <h2 class="winners-title">
+            be amongst<br>
+            the victors
+        </h2>
+        <p class="winners-description">
+            pay at CRED pay select malls. stand to<br>
+            win 100% cashback when you pay via CRED pay
+        </p>
+
+        <div class="winners-gallery">
+            <div class="stripe-bg"></div>
+            <div class="winners-grid">
+                <div class="winner-card">
+                    <img src="mansi.png" alt="Winner 1" class="winner-image img-placeholder">
+                    <div class="winner-info">
+                        <p class="winner-name">Mansi at</p>
+                        <p class="winner-location">Nexus Koramangala Bangalore</p>
+                    </div>
+                </div>
+                <div class="winner-card">
+                    <img src="ram.png" alt="Winner 2" class="winner-image img-placeholder">
+                    <div class="winner-info">
+                        <p class="winner-name">Ram at</p>
+                        <p class="winner-location">Nexus Chennai</p>
+                    </div>
+                </div>
+                <div class="winner-card">
+                    <img src="vikas.png" alt="Winner 3" class="winner-image img-placeholder">
+                    <div class="winner-info">
+                        <p class="winner-name">Vikas at</p>
+                        <p class="winner-location">Nexus Esplanade</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-header">
+            <p class="faq-subtitle">FREQUENTLY ASKED QUESTIONS</p>
+            <h2 class="faq-title">the rules</h2>
+        </div>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>the winning</h3>
+                    <span class="faq-number">01</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Every hour, one lucky winner gets 100% cashback on their purchase made via CRED pay at select mall partners.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>the shopping</h3>
+                    <span class="faq-number">02</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Shop at any participating stores within our partner malls using CRED pay to be eligible for the hourly cashback.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>the chances</h3>
+                    <span class="faq-number">03</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The more you shop using CRED pay, the higher your chances of winning the 100% cashback reward.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>the celebration</h3>
+                    <span class="faq-number">04</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Winners are notified instantly and cashback is credited directly to their CRED account within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exclusive Section -->
+    <section class="exclusive-section">
+        <div class="exclusive-icon">
+            <div class="circle-icon">
+                <div class="icon-inner">
+                    <div class="check-icon">✓</div>
+                    <div class="cred-icon">
+                        <img src="cred-shield.webp" alt="CRED" style="width: 30px;" class="img-placeholder">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="exclusive-subtitle">ALL OF THE ABOVE IS</p>
+        <h2 class="exclusive-title">
+            <span class="brand">CRED pay</span>
+            <span class="exclusive">exclusive</span>
+        </h2>
+        <p class="exclusive-description">
+            crafted exclusively for the 1%, it is the newest payment<br>
+            system by CRED that promises assured rewards after<br>
+            every payment.
+        </p><a href="./cred-pay1.html">
+        <button class="learn-more-btn">LEARN MORE →</button>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h2>
+                    most rewarding<br>
+                    payment system ever
+                </h2>
+            </div>
+            <div class="footer-right">
+                <img src="cred1.png" alt="CRED" class="footer-logo img-placeholder">
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-links">
+                <a href="#">privacy policy</a>
+                <a href="#">terms and conditions</a>
+                <a href="#">security</a>
+            </div>
+            <p class="footer-copy">copyright © 2025-26 Dreamplug Technologies Pvt Ltd.</p>
+        </div>
+    </footer>
+
+    <!-- Marquee -->
+    <div class="marquee">
+        <div class="marquee-content">
+            <span>DOWNLOAD CRED</span>
+            <span>•</span>
+            <span>DOWNLOAD CRED</span>
+            <span>•</span>
+            <span>DOWNLOAD CRED</span>
+            <span>•</span>
+            <span>DOWNLOAD CRED</span>
+            <span>•</span>
+            <span>DOWNLOAD CRED</span>
+            <span>•</span>
+            <span>DOWNLOAD CRED</span>
+            <span>•</span>
+            <span>DOWNLOAD CRED</span>
+            <span>•</span>
+            <span>DOWNLOAD CRED</span>
+            <span>•</span>
+        </div>
+    </div>
+</body>
+</html>
