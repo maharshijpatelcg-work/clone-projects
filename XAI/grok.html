@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grok - Your Truth-Seeking AI Companion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-logo {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 300;
+            letter-spacing: -0.05em;
+            margin-bottom: 2rem;
+            background: linear-gradient(180deg, #fff 0%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1.2rem 4rem 1.2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-box:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .search-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-description {
+            text-align: center;
+            max-width: 700px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+            border: 1px solid #fff;
+        }
+
+        .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Features Section */
+        .section {
+            min-height: 100vh;
+            padding: 5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .feature-description {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-demo {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #00ff88;
+            line-height: 1.6;
+        }
+
+        /* App Preview Section */
+        .app-preview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .preview-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .platform-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-container {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item {
+            min-width: 350px;
+            height: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .gallery-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .gallery-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* SuperGrok Section */
+        .supergrok {
+            background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
+            text-align: center;
+        }
+
+        .supergrok-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .product-card {
+            text-align: left;
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-subtitle {
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-visual {
+            width: 100%;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Games Section */
+        .games-container {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .games-menu {
+            list-style: none;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            line-height: 2;
+            margin: 2rem 0;
+        }
+
+        .games-menu li {
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 0.5rem;
+        }
+
+        .games-menu li:hover {
+            color: #00ff88;
+            transform: translateX(10px);
+        }
+
+        .games-menu .active {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .app-preview {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item {
+                min-width: 280px;
+                height: 350px;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Mobile Interface Mock */
+        .mobile-frame {
+            width: 300px;
+            height: 600px;
+            background: #000;
+            border-radius: 40px;
+            border: 8px solid #1a1a1a;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            margin: 0 auto;
+        }
+
+        .mobile-screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-time {
+            font-size: 0.9rem;
+        }
+
+        .mobile-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            margin: 2rem 0;
+        }
+
+        .mobile-features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: auto;
+            padding: 1rem 0;
+        }
+
+        .mobile-feature {
+            text-align: center;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-logo">Grok</div>
+        
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="What do you want to know?">
+            <button class="search-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <p class="hero-description">
+            Grok is your truth-seeking AI companion for unfiltered answers with advanced capabilities in reasoning, coding, and visual processing.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="./grok-use.html" class="btn btn-primary">
+                TRY GROK
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </a>
+            <a href="#api" class="btn btn-secondary">
+                BUILD WITH API
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </a>
+        </div>
+
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Intelligent Answers Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Get intelligent<br>answers from Grok</h2>
+            <p class="section-subtitle">
+                Get intelligent answers from Grok. Featuring frontier capabilities in conversation, coding, reasoning, and voice.
+            </p>
+
+            <div class="app-preview">
+                <div>
+                    
+                    <div class="mobile-frame">
+                        
+                        <div class="mobile-screen">
+                            
+                            <div class="mobile-header">
+                                <div class="mobile-time">9:41</div>
+                                <div>📶 📡 🔋</div>
+                            </div>
+                            
+                            <div class="mobile-logo"><div>
+                                <img src="./app-preview.png" alt="">
+                            </div>
+                                <svg width="60" height="60" viewBox="0 0 100 100" fill="none">
+                                    <path d="M30 20L70 50L30 80" stroke="white" stroke-width="3"/>
+                                </svg>
+                            </div>
+
+                            <div style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 1rem; margin-bottom: 1rem;">
+                                <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem;">Ask anything</div>
+                                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                    </svg>
+                                    <span style="font-size: 0.9rem;">Grok 4</span>
+                                </div>
+                            </div>
+
+                            <div class="mobile-features">
+                                <div class="mobile-feature">
+                                    <div style="margin-bottom: 0.5rem;">🎤</div>
+                                    <div>Voice Mode</div>
+                                </div>
+                                <div class="mobile-feature">
+                                    <div style="margin-bottom: 0.5rem;">🖼️</div>
+                                    <div>Create Images</div>
+                                </div>
+                                <div class="mobile-feature">
+                                    <div style="margin-bottom: 0.5rem;">✏️</div>
+                                    <div>Edit Images</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="platform-buttons">
+                        <a href="./grok-use.html" class="btn btn-primary">GROK WEB →</a>
+                        <a href="./sign-up-X.html" class="btn btn-secondary">GROK ON X →</a>
+                        <a href="https://apps.apple.com/us/app/grok/id6670324846" class="btn btn-secondary">IOS →</a>
+                        <a href="https://play.google.com/store/apps/details?id=ai.x.grok&hl=en" class="btn btn-secondary">ANDROID →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Work Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">A trusted assistant<br>for deep work</h2>
+            <p class="section-subtitle">
+                Grok can create rich documents, write code, and has the most real-time search capabilities of any AI model.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3 class="feature-title">Realtime search</h3>
+                    <p class="feature-description">
+                        Gain insights from X trends, analyzing real-time data and sentiment across industries.
+                    </p>
+                    <div class="feature-demo">
+                        <div style="margin-bottom: 1rem; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                            <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">What's new with Grok?</div>
+                            <div style="font-size: 0.85rem;">This is it: The world’s smartest AI, Grok 4, now available to SuperGrok users.
+
+Try Grok 4 now: https://grok.com
+
+SuperGrok Heavy users will also have access to Grok 4 Heavy, for your more challenging tasks.</div>
+                        </div>
+                        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.4);"></div>
+                        07 jul 2025
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-title">Understand documents</h3>
+                    <p class="feature-description">
+                        Condense lengthy documents into concise summaries, highlighting key points and actionable findings.
+                    </p>
+                    <div class="feature-demo">
+                        <div style="margin-bottom: 1rem; font-size: 0.85rem;">
+                            Through comprehensive document analysis platform identified key trends across 1,245 reports submitted in Q4 2024.
+                        </div>
+                        <div style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">
+                            The data revealed a 17% increase in overall year-over-year revenue growth...
+                        </div><br>
+                        <p>Revenue growth, however, remained steady at 9%, with 62% of companies exceeding their
+                         projected earnings. Sector-specific insights showed that technology and healthcare 
+                         outperformed other industries, contributing 28% and 19% to total revenue, respectively
+                         </p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-title">Supercharge your code</h3>
+                    <p class="feature-description">
+                        Receive code guidance, solutions, and best practices without executing or debugging.
+                    </p>
+                    <div class="feature-demo">
+                    <pre class="code-block">import { useState, useEffect };
+function useDebounce(value){
+  const [debouncedValue]
+  
+  useEffect(() => {
+    const timer = setTimeout{
+      setDebounced(value);
+    }
+    }, [value, delay]);
+}
+    return debouncedValue;</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SuperGrok Section -->
+    <section class="section supergrok">
+        <div class="container" style="text-align: center;">
+            <div class="supergrok-badge">
+                <!-- <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
+                    <path d="M30 20L70 50L30 80" stroke="white" stroke-width="3"/>
+                </svg> -->
+                <img src="./gork.png" alt="">
+                SuperGrok
+            </div>
+            <h2 class="section-title">Do more with Grok.</h2>
+            <p class="section-subtitle" style="margin: 0 auto;">
+                Unlock a SuperGrok subscription on Grok.com.<br>
+                We've just launched SuperGrok Heavy, providing access to Grok Heavy and much higher rate limits.
+            </p>
+            <a href="#signup"  class="btn btn-primary" style="margin-top: 2rem;">SIGN UP NOW →</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section">
+        <div class="container">
+            <div class="products-grid">
+                <div class="product-card">
+                    <h3 class="product-title">Deep dive with<br>Grok Heavy</h3>
+                    <p class="product-subtitle">
+                        The most powerful version of Grok. Now available with a SuperGrok Heavy subscription on all platforms.
+                    </p>
+                    <a href="#" class="btn btn-secondary">DIVE DEEP →</a>
+                    <div class="product-visual">
+                        <div style="text-align: center; color: rgba(255,255,255,0.3);">
+                            <!-- <div style="margin-bottom: 1rem; font-size: 1.5rem;">Grok 4 Heavy</div> -->
+                            <div style="display: flex; gap: 2rem; justify-content: center;">
+                                <img src="./divedeep.png" alt="" srcset="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <h3 class="product-title">Find meaning with<br>Grok Think</h3>
+                    <p class="product-subtitle">
+                        Discover profound insights with Grok Think, connecting dots and revealing truths in complex ideas.
+                    </p>
+                    <a href="#" class="btn btn-secondary">FIND ANSWERS →</a>
+                    <div class="product-visual" style="background: linear-gradient(135deg, rgba(100,50,150,0.1), rgba(50,100,200,0.1));">
+                        <!-- <img src="./2.png" alt="" srcset=""> -->
+                         <img src="./findanswer.png" alt="" srcset="">
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <h3 class="product-title">Talk with<br>Grok Voice</h3>
+                    <p class="product-subtitle">
+                        Engage in seamless conversations with Grok Voice, experiencing natural, fluid dialogue like never before.
+                    </p>
+                    <a href="#" class="btn btn-secondary">START TALKING →</a>
+                    <div class="product-visual" style="background: linear-gradient(135deg, rgba(50,200,150,0.1), rgba(100,150,250,0.1));">
+                        <img src="./starttalking.png" alt="" srcset="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Generation Section -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.5); margin-bottom: 1rem;">[ IMAGE GENERATION ]</div>
+                <h2 class="section-title">Transform text<br>into visual realities</h2>
+            </div>
+
+            <div class="image-gallery">
+                <div class="gallery-container" id="galleryContainer">
+                    <div class="gallery-item">
+                        <img src="./Lockheed SR-71.webp" alt="Gallery Image 1">
+                        <div class="gallery-caption">
+                            Lockheed SR-71 Blackbird flying through an abstract sky background with multiple moons in the sky
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./Astronaut.jpeg" alt="Gallery Image 2">
+                        <div class="gallery-caption">
+                            An astronaut standing on the surface of an alien planet, with a spaceship in the distance
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./IceVolcano.webp" alt="Gallery Image 3">
+                        <div class="gallery-caption">
+                            A volcano surrounded by lush vegetation with dramatic lighting
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-controls">
+                    <button class="gallery-btn" onclick="scrollGallery(-1)">←</button>
+                    <button class="gallery-btn" onclick="scrollGallery(1)">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Available anywhere.</h2>
+            
+            <div class="platform-buttons" style="margin: 2rem 0;">
+                <a href="#" class="btn btn-primary">GROK WEB →</a>
+                <a href="#" class="btn btn-secondary">GROK ON X →</a>
+                <a href="#" class="btn btn-secondary">IOS →</a>
+                <a href="#" class="btn btn-secondary">ANDROID →</a>
+            </div>
+
+            <div class="games-container">
+                <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">LET'S PLAY</h3>
+                <ul class="games-menu">
+                    <li>PONG</li>
+                    <li>TETRIS</li>
+                    <li>SNAKE</li>
+                    <li>ASTEROIDS</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <a href="./index.html"><div class="footer-logo">
+                    <img src="./grok.png" height="30px" alt="">
+                    <span>GROK</span>
+                </div></a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Try Grok On</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Web</a></li>
+                    <li><a href="#">iOS</a></li>
+                    <li><a href="#">Android</a></li>
+                    <li><a href="#">Grok on X</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Products</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Grok</a></li>
+                    <li><a href="#">API</a></li>
+                    <li><a href="#">Grok Enterprise</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Company</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">News</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Safety</a></li>
+                    <li><a href="#">Legal</a></li>
+                    <li><a href="#">Status</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); font-size: 0.85rem;">
+            © 2024 Grok. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

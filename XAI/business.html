@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grok Business Clone</title>
+  <style>
+    /* --- Base Styles --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #222831, #0f0f0f);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* --- Header --- */
+.header {
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.back-btn {
+  background: #2a2a2a;
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: #444;
+}
+
+/* --- Main Section --- */
+.main-section {
+  text-align: center;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.title span {
+  color: #ffffffd0;
+}
+
+.subtitle {
+  color: #b0b0b0;
+  margin-top: 0.5rem;
+}
+
+.desc {
+  color: #a5a5a5;
+  margin-top: 0.2rem;
+}
+
+/* --- Toggle Buttons --- */
+.toggle-buttons {
+  background: #1c1c1c;
+  display: inline-flex;
+  border-radius: 25px;
+  padding: 0.3rem;
+  margin-top: 1.5rem;
+}
+
+.toggle-btn {
+  border: none;
+  background: transparent;
+  color: #aaa;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggle-btn.active {
+  background: #333;
+  color: white;
+}
+
+.toggle-btn:hover {
+  background: #2a2a2a;
+}
+
+/* --- Pricing Section --- */
+.pricing-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding: 0 2rem;
+}
+
+/* --- Card --- */
+.card {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 15px;
+  width: 300px;
+  padding: 2rem;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #555;
+}
+
+.card.dark {
+  background: #111;
+}
+
+.plan-title {
+  color: #fff;
+  font-weight: 600;
+}
+
+.price {
+  font-size: 2rem;
+  margin: 0.8rem 0;
+}
+
+.price span {
+  font-size: 1rem;
+  color: #999;
+}
+
+.action-btn {
+  background: #fff;
+  color: #000;
+  border: none;
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: 0.3s;
+}
+
+.action-btn:hover {
+  background: #dcdcdc;
+}
+
+/* --- Features --- */
+.features {
+  list-style: none;
+  color: #ccc;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* --- Background Image --- */
+.bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .pricing-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="./index.html" class="back-btn">← Go to Grok</a>
+  </header>
+
+  <main class="main-section">
+    <h1 class="title">Grok <span>Business</span></h1>
+    <p class="subtitle">Ignite collective genius</p>
+    <p class="desc">Scale intelligence across your organization</p>
+
+    <div class="toggle-buttons">
+      <a href="./sign-up-now.html"><button class="toggle-btn">Individual</button></a>
+      <button class="toggle-btn active">Business</button>
+    </div>
+
+    <section class="pricing-section">
+      <!-- Grok Business Card -->
+      <div class="card">
+        <h3 class="plan-title">Grok Business</h3>
+        <p class="price">$30.00 <span>/seat</span></p>
+        <button class="action-btn">Create a team</button>
+
+        <ul class="features">
+          <li>⚡ Everything in SuperGrok</li>
+          <li>🤝 Sharing and collaboration</li>
+          <li>💳 Centralized billing and invoicing</li>
+          <li>🧩 Advanced team + seat management</li>
+          <li>📈 User analytics and reporting</li>
+          <li>🔐 Domain verification</li>
+          <li>🚫 Excluded from training by default</li>
+          <li>➕ More</li>
+        </ul>
+      </div>
+
+      <!-- Enterprise Card -->
+      <div class="card dark">
+        <h3 class="plan-title">Enterprise</h3>
+        <p class="price talk">Let's Talk</p>
+        <button class="action-btn">Contact us</button>
+
+        <ul class="features">
+          <li>∞ Unlimited users</li>
+          <li>🔑 Single sign-on (SSO)</li>
+          <li>🔗 Directory sync (SCIM)</li>
+          <li>🛡 Custom role-based access controls</li>
+          <li>🗃 Custom data retention</li>
+          <li>🏗 Flexible organizational structures</li>
+          <li>🎯 Dedicated onboarding and support</li>
+          <li>➕ More</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Optional Background Image -->
+    <img src="./bussiness-back.jpeg" alt="Background" class="bg-img">
+  </main>
+</body>
+</html>

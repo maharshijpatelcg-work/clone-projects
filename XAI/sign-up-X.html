@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in to X</title>
+  <style>
+    /* --- Global Reset --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* --- Container --- */
+.container {
+  background-color: #000;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* --- Close Button --- */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* --- Logo --- */
+.x-logo {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Title --- */
+.title {
+  font-size: 1.6rem;
+  margin-bottom: 1.8rem;
+  font-weight: 700;
+}
+
+/* --- Buttons --- */
+.btn {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transition: 0.3s;
+}
+
+/* --- Google Button --- */
+.google-btn {
+  background-color: #fff;
+  color: #000;
+  gap: 0.6rem;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.google-btn:hover {
+  background-color: #e6e6e6;
+}
+
+/* --- Apple Button --- */
+.apple-btn {
+  background-color: #fff;
+  color: #000;
+  gap: 0.6rem;
+}
+
+.apple-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.apple-btn:hover {
+  background-color: #e6e6e6;
+}
+
+/* --- Divider --- */
+.divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #888;
+  margin: 1rem 0;
+}
+
+.divider hr {
+  flex: 1;
+  border: 0.5px solid #333;
+}
+
+.divider span {
+  margin: 0 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* --- Input --- */
+.input-box {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 1px solid #333;
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-box:focus {
+  outline: none;
+  border-color: #1d9bf0;
+}
+
+/* --- Next Button --- */
+.next-btn {
+  background-color: #e7e9ea;
+  color: #000;
+}
+
+.next-btn:hover {
+  background-color: #cfd1d1;
+}
+
+/* --- Forgot Password --- */
+.forgot-btn {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: white;
+}
+
+.forgot-btn:hover {
+  background-color: #161616;
+}
+
+/* --- Sign Up Text --- */
+.signup-text {
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.signup-text a {
+  color: #1d9bf0;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .btn {
+    font-size: 0.95rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Close Button -->
+    <a href="./x.html"><button class="close-btn">✕</button></a>
+
+    <!-- X Logo -->
+    <img src="x-logo.png" alt="X Logo" class="x-logo" />
+
+    <h1 class="title">Sign in to X</h1>
+
+    <!-- Google Sign In -->
+    <button class="btn google-btn">
+      <img src="./google.jpeg" alt="Google Icon" />
+      <span>Sign in with Google</span>
+    </button>
+
+    <!-- Apple Sign In -->
+    <button class="btn apple-btn">
+      <img src="./apple.jpeg" alt="Apple Icon" />
+      <span>Sign in with Apple</span>
+    </button>
+
+    <!-- Divider -->
+    <div class="divider">
+      <hr /><span>or</span><hr />
+    </div>
+
+    <!-- Input -->
+    <input
+      type="text"
+      placeholder="Phone, email address, or username"
+      class="input-box"
+    />
+
+    <!-- Next Button -->
+    <button class="btn next-btn">Next</button>
+
+    <!-- Forgot Password -->
+    <button class="btn forgot-btn">Forgot password?</button>
+
+    <!-- Sign Up Text -->
+    <p class="signup-text">
+      Don’t have an account? <a href="#">Sign up</a>
+    </p>
+  </div>
+</body>
+</html>

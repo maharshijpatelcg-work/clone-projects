@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X | Happening Now</title>
+<style>
+    /* === Base Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+/* === Container === */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 2rem;
+  flex: 1;
+}
+
+/* === Left Section === */
+.left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 280px;
+}
+
+.x-logo {
+  width: 60%;
+  max-width: 450px;
+  filter: invert(100%);
+}
+
+/* === Right Section === */
+.right {
+  flex: 1;
+  min-width: 320px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.heading {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.subheading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0 2rem;
+}
+
+/* === Buttons === */
+.buttons {
+  width: 100%;
+}
+
+.btn {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* --- Google --- */
+.google-btn {
+  background-color: #fff;
+  color: #000;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.google-btn:hover {
+  background-color: #e6e6e6;
+}
+
+/* --- Apple --- */
+.apple-btn {
+  background-color: #fff;
+  color: #000;
+}
+
+.apple-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.apple-btn:hover {
+  background-color: #e6e6e6;
+}
+
+/* --- Create Account --- */
+.create-btn {
+  background-color: #e7e9ea;
+  color: #000;
+  font-weight: 700;
+}
+
+.create-btn:hover {
+  background-color: #cfd1d1;
+}
+
+/* === Divider === */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-weight: 500;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.divider hr {
+  flex: 1;
+  border: 0.5px solid #333;
+}
+
+.divider span {
+  margin: 0 0.5rem;
+}
+
+/* === Terms === */
+.terms {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+
+.terms a {
+  color: #1d9bf0;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+/* === Sign In Section === */
+.signin-section {
+  width: 100%;
+}
+
+.signin-section h3 {
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.signin-btn,
+.grok-btn {
+  width: 100%;
+  border: 1px solid #333;
+  border-radius: 25px;
+  background-color: transparent;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  transition: 0.3s;
+}
+
+.signin-btn:hover,
+.grok-btn:hover {
+  background-color: #161616;
+}
+
+.grok-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.grok-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+/* === Footer === */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: #888;
+  line-height: 1.8;
+}
+
+.footer a {
+  color: #888;
+  text-decoration: none;
+  margin: 0 0.4rem;
+}
+
+.footer a:hover {
+  color: #1d9bf0;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .right {
+    align-items: center;
+  }
+
+  .heading {
+    font-size: 2.2rem;
+  }
+
+  .subheading {
+    font-size: 1.6rem;
+  }
+
+  .x-logo {
+    width: 50%;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="container">
+    <!-- Left Section (Logo) -->
+    <section class="left">
+      <img src="x-logo.png" alt="X Logo" class="x-logo">
+    </section>
+
+    <!-- Right Section (Join Info) -->
+    <section class="right">
+      <h1 class="heading">Happening now</h1>
+      <h2 class="subheading">Join today.</h2>
+
+      <!-- Sign Up Buttons -->
+      <div class="buttons">
+        <button class="btn google-btn">
+          <img src="./google.jpeg" alt="Google Icon">
+          <span>Sign up with Google</span>
+        </button>
+
+        <button class="btn apple-btn">
+          <img src="./apple.jpeg" alt="Apple Icon">
+          <span>Sign up with Apple</span>
+        </button>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider">
+        <hr><span>OR</span><hr>
+      </div>
+
+      <!-- Create Account -->
+      <button class="btn create-btn">Create account</button>
+
+      <p class="terms">
+        By signing up, you agree to the
+        <a href="#">Terms of Service</a> and
+        <a href="#">Privacy Policy</a>, including
+        <a href="#">Cookie Use</a>.
+      </p>
+
+      <!-- Already Have Account -->
+      <div class="signin-section">
+        <h3>Already have an account?</h3>
+        <button class="btn signin-btn">Sign in</button>
+        <a href="./index.html"><button class="btn grok-btn">
+          <img src="./grok.png" alt="Grok Icon">
+          <span>Get Grok</span>
+        </button></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <a href="#">About</a>
+    <a href="#">Download the X app</a>
+    <a href="#">Grok</a>
+    <a href="#">Help Centre</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Cookie Policy</a>
+    <a href="#">Accessibility</a>
+    <a href="#">Ads info</a>
+    <a href="#">Blog</a>
+    <a href="#">Careers</a>
+    <a href="#">Brand Resources</a>
+    <a href="#">Advertising</a>
+    <a href="#">Marketing</a>
+    <a href="#">X for Business</a>
+    <a href="#">Developers</a>
+    <a href="#">News</a>
+    <a href="#">Settings</a>
+    <p>© 2025 X Corp.</p>
+  </footer>
+</body>
+</html>

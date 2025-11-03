@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grok - AI for all humanity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary: #000;
+            --secondary: #fff;
+            --accent: #1a8917;
+            --gray: #888;
+            --light-bg: #111;
+            --section-padding: 80px 20px;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--secondary);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary);
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--secondary);
+        }
+
+        .btn-primary:hover {
+            background-color: #136611;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            color: var(--secondary);
+            font-size: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: var(--section-padding);
+            text-align: center;
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--gray);
+        }
+
+        /* Products Section */
+        .products {
+            padding: var(--section-padding);
+            background-color: var(--light-bg);
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 60px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 40px 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .product-card p {
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+
+        /* Universe Section */
+        .universe {
+            padding: var(--section-padding);
+            text-align: center;
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .universe-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .universe-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: -1;
+        }
+
+        .universe h2 {
+            font-size: 72px;
+            margin-bottom: 30px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        /* SuperGrok Section */
+        .supergrok {
+            padding: var(--section-padding);
+            background-color: var(--light-bg);
+        }
+
+        .supergrok-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .supergrok-info h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .supergrok-info p {
+            color: var(--gray);
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .news-section h3 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .news-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .news-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* Announcements Section */
+        .announcements {
+            padding: var(--section-padding);
+        }
+
+        .announcement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .announcement-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .announcement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .announcement-image {
+            height: 200px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .announcement-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .announcement-image-text {
+            position: absolute;
+            font-size: 28px;
+            color: var(--secondary);
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .announcement-content {
+            padding: 30px;
+        }
+
+        .announcement-date {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .announcement-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .announcement-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 20px 30px;
+            background-color: #0a0a0a;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .supergrok-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .universe h2 {
+                font-size: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .universe h2 {
+                font-size: 48px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .universe h2 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .product-grid, .announcement-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">GROK</div>
+        <nav>
+            <button class="mobile-menu-btn">☰</button>
+            <ul>
+                <li><a href="./grok.html">GROK</a></li>
+                <li><a href="#">API</a></li>
+                <li><a href="#">COMPANY</a></li>
+                <li><a href="#">COLOSSUS</a></li>
+                <li><a href="#">CAREERS</a></li>
+                <li><a href="#">NEWS</a></li>
+                <li><a href="./grok-use.html">TRY GROK</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="./gork-full.jpeg" alt="AI Technology" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <h1>What do you want to know?</h1>
+            <p>Grok 4 is the most intelligent model in the world. Available now to SuperGrok and Premium+ subscribers, as well as our API.</p>
+            <button class="btn-primary">READ ANNOUNCEMENT</button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">AI for all humanity</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <h3>Grok</h3>
+                    <p>Grok is your cosmic guide, now accessible on grok.com, iOS, and Android. Explore the universe with AI.</p>
+                    <a href="./grok-use.html">
+                        <img src="./grok-back.jpeg" height="400px" width="300px" alt="">
+                    <button class="btn-secondary">USE GROK</button>
+                    </a>
+                </div>
+                <div class="product-card">
+                    <h3>API</h3>
+
+                    <p>Supercharge your applications with Grok's enhanced speed, precision, and multilingual capabilities.</p>
+                    <img src="./api.png" height="400px" width="300px" alt="">
+
+                    <a href="./build.html"><button class="btn-secondary">BUILD NOW</button></a>
+                </div>
+                <div class="product-card">
+                    <h3>Developer Docs</h3>
+                    <p>Learn how to quickly install Grok at the heart of your applications and explore guides covering common use cases.</p>
+                    <img src="./developer-docs.png" height="400px" width="300px" alt="">
+                    <a href="./developer-learn.html"><button class="btn-secondary">LEARN MORE</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Universe Section -->
+    <section class="universe">
+        <img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Universe" class="universe-bg">
+        <div class="universe-overlay"></div>
+        <div class="container">
+            <h2>Understand<br>The Universe</h2>
+        </div>
+    </section>
+
+    <!-- SuperGrok Section -->
+    <section class="supergrok">
+        <div class="container">
+            <div class="supergrok-content">
+                <div class="supergrok-info">
+                    <h2>SuperGrok</h2>
+                    <p>Do more with Grok.</p>
+                    <p>Unlock a SuperGrok subscription on Grok.com.</p>
+                    <p>We've just launched SuperGrok Heavy providing access to Grok Heavy and much higher rate limits.</p>
+                    <a href="./sign-up-now.html"><button class="btn-primary">SIGN UP NOW</button></a>
+                </div>
+                <div class="news-section">
+                    <h3>Latest news</h3>
+                    <div class="news-item">
+                        <div class="news-date">August 28, 2025</div>
+                        <div class="news-title">Grok Code Fast 1</div>
+                        <p>We're thrilled to introduce grok-code-fast-1, a speedy and economical reasoning model that excels at agents coding.</p>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">October 9, 2025</div>
+                        <div class="news-title">Grok 4 Fast</div>
+                        <p>Pushing the Frontier of Cost-Efficient Intelligence</p>
+                    </div>
+                    <a href="#">EXPLORE MORE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcements Section -->
+ <section class="announcements">
+        <div class="container">
+            <div class="announcement-grid">
+                <!-- Grok 4 Fast Card -->
+                <div class="announcement-card">
+                    <div class="announcement-image">
+                        <img src="./grok-4-fast.png" alt="Grok 4 Fast">
+                        <div class="announcement-image-text">GROK 4 FAST</div>
+                    </div>
+                    <div class="announcement-content">
+                        <div class="announcement-date">September 19, 2025</div>
+                        <h3 class="announcement-title">Grok 4 Fast</h3>
+                        <p class="announcement-description">Pushing the Frontier of Cost-Efficient Intelligence</p>
+                        <div class="announcement-buttons">
+                            <button class="btn-grok">GROK</button>
+                            <button class="btn-secondary">READ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grok Code Fast 1 Card -->
+                <div class="announcement-card">
+                    <div class="announcement-image">
+                        <img src="./Grok-Code-Fast-1.png" alt="Grok Code Fast 1">
+                        <div class="announcement-image-text">GROK CODE FAST 1</div>
+                    </div>
+                    <div class="announcement-content">
+                        <div class="announcement-date">August 28, 2025</div>
+                        <h3 class="announcement-title">Grok Code Fast 1</h3>
+                        <p class="announcement-description">We're thrilled to introduce grok-code-fast-1, a speedy and economical reasoning model that excels at agentic coding.</p>
+                        <div class="announcement-buttons">
+                            <button class="btn-grok">GROK</button>
+                            <button class="btn-secondary">READ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grok 4 Card -->
+                <div class="announcement-card">
+                    <div class="announcement-image">
+                        <img src="./grok-4.jpeg" alt="Grok 4">
+                        <div class="announcement-image-text">GROK 4</div>
+                    </div>
+                    <div class="announcement-content">
+                        <div class="announcement-date">July 30, 2025</div>
+                        <h3 class="announcement-title">Grok 4</h3>
+                        <p class="announcement-description">Grok 4 is the most intelligent model in the world. It includes native tool use and real-time search integration, and is available now to SuperGrok and Premium+ subscribers, as well as through the xAI API. We are also introducing a new SuperGrok Heavy tier with access to Grok 4 Heavy - the most powerful version of Grok 4.</p>
+                        <div class="announcement-buttons">
+                            <button class="btn-grok">GROK</button>
+                            <button class="btn-secondary">READ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>TRY GROK OR</h4>
+                    <ul>
+                        <li><a href="https://grok.com/">Web</a></li>
+                        <li><a href="https://apps.apple.com/app/apple-store/id6670324846?pt=126952307&ct=x.ai%20Direct%20Link&mt=8">iOS</a></li>
+                        <li><a href="https://play.google.com/store/apps/details?id=ai.x.grok&hl=en">Android</a></li>
+                        <li><a href="https://x.com/i/grok">Grok on X</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>PRODUCTS</h4>
+                    <ul>
+                        <li><a href="https://x.ai/grok">Grok</a></li>
+                        <li><a href="https://x.ai/api">API</a></li>
+                        <li><a href="https://x.ai/grok/business">Grok Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>COMPANY</h4>
+                    <ul>
+                        <li><a href="https://x.ai/company">Company</a></li>
+                        <li><a href="https://x.ai/careers">Careers</a></li>
+                        <li><a href="https://x.ai/contact">Contact</a></li>
+                        <li><a href="https://x.ai/news">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>RESOURCES</h4>
+                    <ul>
+                        <li><a href="https://docs.x.ai/">Documentation</a></li>
+                        <li><a href="https://x.ai/privacy-policy">Privacy policy</a></li>
+                        <li><a href="https://x.ai/security">Security</a></li>
+                        <li><a href="https://x.ai/safety">Safety</a></li>
+                        <li><a href="https://x.ai/legal">Legal</a></li>
+                        <li><a href="https://status.x.ai/">Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Grok. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

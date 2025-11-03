@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Personal Team</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: #111;
+            border-right: 1px solid #222;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 100;
+        }
+
+        .sidebar.mobile-hidden {
+            transform: translateX(-100%);
+        }
+
+        .team-header {
+            padding: 20px;
+            border-bottom: 1px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .team-header h2 {
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .team-name {
+            font-size: 16px;
+            color: #fff;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .toggle-icon {
+            cursor: pointer;
+            color: #888;
+            font-size: 18px;
+        }
+
+        .nav-menu {
+            flex: 1;
+            padding: 20px 0;
+            overflow-y: auto;
+        }
+
+        .nav-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+            color: #bbb;
+            font-size: 14px;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .nav-item:hover {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .nav-item.active {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .nav-item .icon {
+            width: 20px;
+            font-size: 18px;
+        }
+
+        .nav-item.expandable {
+            justify-content: space-between;
+        }
+
+        .nav-item .expand-arrow {
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .nav-item .expand-arrow.expanded {
+            transform: rotate(180deg);
+        }
+
+        .sidebar-footer {
+            border-top: 1px solid #222;
+            padding: 10px 0;
+        }
+
+        .footer-button {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+            color: #bbb;
+            font-size: 14px;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .footer-button:hover {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .top-bar {
+            height: 60px;
+            background: #0a0a0a;
+            border-bottom: 1px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 16px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            min-width: 200px;
+        }
+
+        .search-box:hover {
+            border-color: #444;
+        }
+
+        .search-box span {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .search-shortcut {
+            margin-left: auto;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icon-button {
+            width: 36px;
+            height: 36px;
+            background: none;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: #bbb;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-size: 18px;
+        }
+
+        .icon-button:hover {
+            background: #1a1a1a;
+            border-color: #444;
+        }
+
+        .profile-pic {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            object-fit: cover;
+        }
+
+        .content-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-header {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 60px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .header-button {
+            padding: 10px 20px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: #bbb;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .header-button:hover {
+            background: #222;
+            border-color: #444;
+        }
+
+        .welcome-section {
+            max-width: 900px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .welcome-section h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .welcome-section p {
+            font-size: 18px;
+            color: #888;
+            line-height: 1.6;
+            margin-bottom: 60px;
+        }
+
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 600px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .checklist-item:hover {
+            background: #1a1a1a;
+            border-color: #333;
+        }
+
+        .checklist-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .checklist-item.completed .checkbox {
+            background: #4CAF50;
+            border-color: #4CAF50;
+        }
+
+        .checkbox::after {
+            content: '✓';
+            color: #fff;
+            font-size: 14px;
+            display: none;
+        }
+
+        .checklist-item.completed .checkbox::after {
+            display: block;
+        }
+
+        .checklist-text {
+            font-size: 16px;
+            color: #e5e5e5;
+        }
+
+        .checklist-item.completed .checklist-text {
+            color: #888;
+            text-decoration: line-through;
+        }
+
+        .action-button {
+            padding: 8px 20px;
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .action-button:hover {
+            background: #e5e5e5;
+        }
+
+        .invite-team {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            padding: 12px 20px;
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.2s;
+        }
+
+        .invite-team:hover {
+            background: #e5e5e5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100vh;
+                z-index: 1000;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .top-bar {
+                padding: 0 20px;
+            }
+
+            .search-box {
+                display: none;
+            }
+
+            .content-area {
+                padding: 20px;
+            }
+
+            .welcome-section h1 {
+                font-size: 32px;
+            }
+
+            .welcome-section p {
+                font-size: 16px;
+            }
+
+            .invite-team {
+                left: 20px;
+                bottom: 20px;
+            }
+
+            .content-header {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome-section h1 {
+                font-size: 28px;
+            }
+
+            .checklist-item {
+                padding: 16px 20px;
+            }
+
+            .action-button {
+                padding: 6px 16px;
+                font-size: 13px;
+            }
+
+            .top-actions .icon-button:not(:last-child) {
+                display: none;
+            }
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="team-header">
+                <div>
+                    <h2>TEAM</h2>
+                    <div class="team-name">Personal team</div>
+                </div>
+                <span class="toggle-icon">⌃</span>
+            </div>
+
+            <nav class="nav-menu">
+                <button class="nav-item active">
+                    <span class="icon">🏠</span>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-item">
+                    <span class="icon">🔑</span>
+                    <span>API Keys</span>
+                </button>
+                <button class="nav-item">
+                    <span class="icon">📊</span>
+                    <span>Usage</span>
+                </button>
+                <button class="nav-item">
+                    <span class="icon">🤖</span>
+                    <span>Models</span>
+                </button>
+                <button class="nav-item">
+                    <span class="icon">⚡</span>
+                    <span>Tokenizer</span>
+                </button>
+                <button class="nav-item">
+                    <span class="icon">📚</span>
+                    <span>Collections</span>
+                </button>
+                <button class="nav-item expandable" id="grokToggle">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="icon">⚡</span>
+                        <span>Grok Business</span>
+                    </div>
+                    <span class="expand-arrow">⌄</span>
+                </button>
+            </nav>
+
+
+            <div class="sidebar-footer">
+                <button class="footer-button">
+                    <span class="icon">💳</span>
+                    <span>Billing</span>
+                </button>
+                <button class="footer-button">
+                    <span class="icon">👥</span>
+                    <span>Users</span>
+                </button>
+                <button class="footer-button">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="top-bar">
+                <button class="hamburger" id="hamburger">☰</button>
+                <div class="search-box">
+                    <span>🔍</span>
+                    <span>Search</span>
+                    <span class="search-shortcut">Ctrl+K</span>
+                </div>
+                <div class="top-actions">
+                    <button class="icon-button" id="docsBtn">📖</button>
+                    <button class="icon-button" id="themeBtn">🌙</button>
+                    <a href="./index.html"><img src="./grok.png" alt="Profile" class="profile-pic" id="profilePic"></a>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <div class="content-header">
+                    <button class="header-button">
+                        <span>💻</span>
+                        <span>API Console</span>
+                    </button>
+                    <button class="header-button">
+                        <span>🔗</span>
+                        <span>Grok Business</span>
+                    </button>
+                </div>
+
+                <div class="welcome-section">
+                    <h1>Let's get you up and running</h1>
+                    <p>Welcome to your new account. Follow the steps highlighted to get up and running in minutes.</p>
+
+                    <div class="checklist">
+                        <div class="checklist-item" data-task="credits">
+                            <div class="checklist-left">
+                                <div class="checkbox"></div>
+                                <div class="checklist-text">Buy some credits</div>
+                            </div>
+                            <button class="action-button">Purchase</button>
+                        </div>
+
+                        <div class="checklist-item" data-task="api-key">
+                            <div class="checklist-left">
+                                <div class="checkbox"></div>
+                                <div class="checklist-text">Create your first API key</div>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item" data-task="request">
+                            <div class="checklist-left">
+                                <div class="checkbox"></div>
+                                <div class="checklist-text">Make your first request</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="invite-team">
+                <span>👥</span>
+                <span>Invite your team</span>
+            </button>
+        </main>
+    </div>
+
+</body>
+</html>
