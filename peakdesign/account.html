@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account – Peak Design Clone</title>
+  <style>
+    /* Reset & base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+body {
+  background: #fff;
+  color: #111;
+  line-height: 1.4;
+}
+
+/* Top Bar */
+.top-bar {
+  background: #000;
+  color: #fff;
+  font-size: 13px;
+}
+.top-bar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top-bar__link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+/* Header / Navbar */
+.header {
+  border-bottom: 1px solid #ddd;
+}
+.header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.logo img {
+  width: 50px;
+}
+.nav {
+  flex: 1;
+  margin: 0 20px;
+}
+.nav__list {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+.nav__list a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+}
+.search {
+  flex: 1;
+  max-width: 300px;
+}
+.search input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.user-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.icon-link img {
+  width: 22px;
+}
+.support {
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: left;
+  color: #fff;
+}
+.hero__image {
+  width: 100%;
+  height: auto;
+  filter: brightness(70%);
+}
+.hero__text {
+  position: absolute;
+  bottom: 30px;
+  left: 50px;
+}
+.breadcrumb a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 13px;
+}
+.hero__text h1 {
+  font-size: 48px;
+  letter-spacing: 4px;
+  margin: 5px 0;
+}
+.hero__text p {
+  font-size: 16px;
+}
+
+/* Tabs Section */
+.tabs {
+  border-bottom: 1px solid #ddd;
+}
+.tabs__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.tab {
+  border: none;
+  background: #f3f3f3;
+  padding: 10px 20px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.tab.active {
+  background: #111;
+  color: #fff;
+}
+.logout {
+  margin-left: auto;
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+}
+
+/* Account Details Section */
+.account-details {
+  background: #fafafa;
+  padding: 40px 20px;
+}
+.account-details__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.card {
+  background: #f5f7f5;
+  padding: 20px;
+  border-radius: 6px;
+  flex: 1;
+  min-width: 280px;
+}
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.card a {
+  color: #2563eb;
+  text-decoration: none;
+}
+.edit-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: #111;
+  font-weight: 500;
+}
+
+/* Registered Gear Section */
+.registered-gear {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f7f7f7;
+}
+.registered-gear__inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.registered-gear h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.btn-primary {
+  background: #111;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+/* Footer */
+.footer {
+  background: #fff;
+  padding: 50px 20px;
+  border-top: 1px solid #ddd;
+}
+.footer__main {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+.footer-column h4 {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.footer-column ul {
+  list-style: none;
+}
+.footer-column a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+.footer-column a:hover {
+  text-decoration: underline;
+}
+.newsletter {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.newsletter input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.btn-secondary {
+  background: #111;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.footer__bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 14px;
+}
+.footer__logo {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav__list {
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 10px 0;
+  }
+  .hero__text {
+    left: 20px;
+    bottom: 20px;
+  }
+  .hero__text h1 {
+    font-size: 32px;
+    letter-spacing: 2px;
+  }
+  .tabs__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .account-details__inner {
+    flex-direction: column;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar__inner">
+      <span>FAST SHIPPING · LIFETIME WARRANTY · 30-DAY RETURNS</span>
+      <a href="#" class="top-bar__link">FIND A STORE</a>
+    </div>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="./index.html" class="logo">
+        <img src="logo.webp" alt="Brand Logo" />
+      </a>
+
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="#">Bags</a></li>
+          <li><a href="#">Mobile</a></li>
+          <li><a href="#">Camera Gear</a></li>
+          <li><a href="#">Luggage</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </nav>
+
+      <div class="search">
+        <input type="text" placeholder="Search for mounts" />
+      </div>
+
+      <div class="user-actions">
+        <a href="#" class="support">Support</a>
+        <a href="#" class="icon-link">
+          <img src="user-icon.png" alt="User Icon" />
+        </a>
+        <a href="#" class="icon-link">
+          <img src="cart-icon.png" alt="Cart Icon" />
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="hero.jpg" alt="Hero Background" class="hero__image" />
+    <div class="hero__text">
+      <p class="breadcrumb"><a href="#">Home</a> | <a href="#">Account</a></p>
+      <h1>ACCOUNT</h1>
+      <p>Everything to manage your account and orders</p>
+    </div>
+  </section>
+
+  <!-- Tabs Section -->
+  <div class="tabs">
+    <div class="tabs__inner">
+      <button class="tab active">MY ACCOUNT</button>
+      <button class="tab">MY REGISTERED GEAR</button>
+      <button class="tab">ORDER HISTORY</button>
+      <button class="tab">MANAGE ADDRESS</button>
+      <button class="tab">MANAGE DATA</button>
+      <a href="./sign-up.html" class="logout">Logout</a>
+    </div>
+  </div>
+
+  <!-- Account Details Section -->
+  <section class="account-details">
+    <div class="account-details__inner">
+      <div class="card">
+        <h3>ACCOUNT DETAILS</h3>
+        <p><strong>Name:</strong></p>
+        <p><strong>Email:</strong> user@example.com</p>
+        <p><a href="#">Contact us</a> to update your email</p>
+        <a href="#" class="edit-link">Edit details</a>
+      </div>
+
+      <div class="card">
+        <h3>RECENT ORDER</h3>
+        <p>Looks like you don’t have order placed yet.</p>
+      </div>
+
+      <div class="card">
+        <h3>DEFAULT ADDRESS</h3>
+        <p>Looks like you don’t have any address added yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registered Gear Section -->
+  <section class="registered-gear">
+    <div class="registered-gear__inner">
+      <h3>MY REGISTERED GEAR</h3>
+      <p>Let's get your gear protected.<br />
+      Register your gear to activate our no-nonsense Lifetime Guarantee.</p>
+      <button class="btn-primary">REGISTER MY GEAR</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__main">
+      <div class="footer-column">
+        <h4>SUPPORT</h4>
+        <ul>
+          <li><a href="#">Support Center</a></li>
+          <li><a href="#">Track Your Order</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Lifetime Warranty</a></li>
+          <li><a href="#">Product Registration</a></li>
+          <li><a href="#">Corporate Sales</a></li>
+          <li><a href="#">PD Expert Program</a></li>
+          <li><a href="#">Collaboration</a></li>
+          <li><a href="#">Military/Students</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>ABOUT</h4>
+        <ul>
+          <li><a href="#">Our Mission</a></li>
+          <li><a href="#">Impact Report</a></li>
+          <li><a href="#">Taking Action</a></li>
+          <li><a href="#">Find a Retailer</a></li>
+          <li><a href="#">Field Notes</a></li>
+          <li><a href="#">Ambassadors</a></li>
+          <li><a href="#">Films</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">#FindYourPeak</a></li>
+          <li><a href="#">Become a Dealer</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>SHOP</h4>
+        <ul>
+          <li><a href="#">Bags</a></li>
+          <li><a href="#">Bag Accessories</a></li>
+          <li><a href="#">Mobile</a></li>
+          <li><a href="#">Camera Gear</a></li>
+          <li><a href="#">Tripods</a></li>
+          <li><a href="#">Sale</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>VISIT A PD STORE</h4>
+        <p>SF | LA | NY | TK | CZ</p>
+
+        <h4>SUBSCRIBE TO NEWSLETTER</h4>
+        <div class="newsletter">
+          <input type="email" placeholder="Your email" />
+          <button class="btn-secondary">SIGN ME UP</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <img src="images/logo.png" alt="Brand Logo" class="footer__logo" />
+      <p>© 2025 Peak Design | All Rights Reserved</p>
+    </div>
+  </footer>
+
+</body>
+</html>

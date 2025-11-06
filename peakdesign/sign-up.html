@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <style>
+    /* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Card Container */
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Logo */
+.logo {
+  width: 60px;
+  margin-bottom: 25px;
+}
+
+/* Headings */
+h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+/* Buttons */
+.shop-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #6439ff;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.shop-btn:hover {
+  background-color: #512ee6;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  color: #888;
+}
+
+.divider span {
+  flex: 1;
+  height: 1px;
+  background-color: #ddd;
+}
+
+/* Input */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 15px;
+  margin-bottom: 15px;
+  transition: border 0.3s;
+}
+
+.input-field:focus {
+  border-color: #6439ff;
+}
+
+/* Continue Button */
+.continue-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #1500ff;
+  color: #e33232;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.continue-btn:hover {
+  background-color: #3002fd;
+}
+
+/* Footer Links */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+  font-size: 13px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #2563eb;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .card {
+    padding: 30px 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .shop-btn, .continue-btn, .input-field {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+     <a href="./index.html"><img src="logo.webp" alt="Logo" class="logo"> </a><!-- Replace this with your logo -->
+      
+      <h2>Sign in</h2>
+      <p class="subtitle">Choose how you'd like to sign in</p>
+
+      <button class="shop-btn">Sign in with shop</button>
+
+      <div class="divider">
+        <span></span>
+        <p>or</p>
+        <span></span>
+      </div>
+
+      <input type="email" placeholder="Email" class="input-field">
+
+      <a href="./account.html"><button class="continue-btn">Continue</button></a>
+
+      <div class="footer-links">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

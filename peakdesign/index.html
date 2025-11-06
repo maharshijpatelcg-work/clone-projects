@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peak Design - Travel Gear & Camera Bags</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: #000;
+            color: #fff;
+            padding: 8px 20px;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 15px 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #000;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #666;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 8px 15px;
+            width: 250px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header-icons a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #e8e8e8;
+            padding: 80px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h2 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #000;
+            border-color: #000;
+        }
+
+        .btn-secondary:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Best Sellers Section */
+        .section {
+            padding: 60px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: #f5f5f5;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            background: #000;
+            color: #fff;
+        }
+
+        .tab:hover {
+            background: #ddd;
+        }
+
+        .tab.active:hover {
+            background: #333;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .product-info .subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .product-info .price {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .product-info .colors {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        /* Explore Section */
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .explore-card {
+            position: relative;
+            height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .explore-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .explore-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .explore-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .explore-overlay h3 {
+            font-size: 32px;
+        }
+
+        .explore-overlay .arrow {
+            font-size: 24px;
+            background: rgba(255,255,255,0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* New Arrivals Section */
+        .new-arrivals {
+            background: #000;
+            color: #fff;
+            padding: 80px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .new-arrivals-content {
+            flex: 1;
+        }
+
+        .new-arrivals-content h2 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .new-arrivals-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        .new-arrivals-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .new-arrivals-image img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Coming Soon Section */
+        .coming-soon {
+            background: #f5f5f5;
+            padding: 60px 40px;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .coming-soon-image {
+            flex: 1;
+        }
+
+        .coming-soon-image img {
+            max-width: 100%;
+        }
+
+        .coming-soon-content {
+            flex: 1;
+        }
+
+        .coming-soon-content .tag {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .coming-soon-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .coming-soon-content p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        /* Company Values */
+        .company-values {
+            padding: 60px 40px;
+        }
+
+        .company-values h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            position: relative;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .value-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Featured Section */
+        .featured {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .featured-image {
+            flex: 1;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            flex: 1;
+            background: #000;
+            color: #fff;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-content .tag {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: #999;
+        }
+
+        .featured-content h2 {
+            font-size: 42px;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .featured-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        /* Retailer Section */
+        .retailer-section {
+            display: flex;
+            align-items: center;
+            padding: 60px 40px;
+            background: #f9f9f9;
+            gap: 60px;
+        }
+
+        .retailer-content {
+            flex: 1;
+        }
+
+        .retailer-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .retailer-content p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .retailer-content input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .retailer-image {
+            flex: 1;
+        }
+
+        .retailer-image img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: #f9f9f9;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #666;
+        }
+
+        .footer-newsletter h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .footer-newsletter p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .newsletter-form button {
+            padding: 12px 25px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .store-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .store-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #333;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .footer-legal a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .footer-certifications {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .footer-certifications img {
+            height: 40px;
+        }
+
+        .currency-selector {
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-image {
+                text-align: center;
+                margin-top: 40px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .new-arrivals {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .new-arrivals-image {
+                text-align: center;
+                margin-top: 40px;
+            }
+
+            .featured {
+                flex-direction: column;
+            }
+
+            .retailer-section {
+                flex-direction: column;
+            }
+
+            .coming-soon {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .search-bar {
+                width: 150px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 40px 20px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .explore-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <a href="#mission">⚡ OUR MISSION</a>
+        <div>FAST SHIPPING • LIFETIME WARRANTY • 30-DAY RETURNS</div>
+        <a href="#store">📍 FIND A STORE</a>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <img src="./logo.webp" class="logo" alt="">
+            <nav>
+                <a href="#bags">Bags</a>
+                <a href="#mobile">Mobile</a>
+                <a href="#camera">Camera Gear</a>
+                <a href="#luggage">Luggage</a>
+                <a href="#sale">Sale</a>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products">
+            </div>
+            <div class="header-icons">
+                <a href="#support">Support</a>
+                <a href="./sign-up.html">👤</a>
+                <a href="#cart">🛒</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>BACK AND READY TO ROLL</h2>
+            <h1>ROLLER PRO: BACK<br>IN STOCK</h1>
+            <div class="hero-buttons">
+                <a href="#buy" class="btn btn-primary">BUY NOW →</a>
+                <a href="#travel" class="btn btn-secondary">SHOP TRAVEL</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="./roller.webp" alt="Roller Pro Luggage">
+        </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Best Sellers</h2>
+            <div class="category-tabs">
+                <button class="tab active">TRAVEL</button>
+                <button class="tab">EVERYDAY</button>
+                <button class="tab">OUTDOOR</button>
+                <button class="tab">CAMERA GEAR</button>
+                <button class="tab">MOBILE</button>
+                <button class="tab">MOTO</button>
+            </div>
+        </div>
+        <div class="products-grid">
+            <a href="#" class="product-card">
+                <div class="product-image">
+                    <img src="./Roller Pro.png" alt="Roller Pro">
+                </div>
+                <div class="product-info">
+                    <h3>Roller Pro Carry-On</h3>
+                    <div class="price">$599.95</div>
+                    <div class="colors">IN 3 COLORS</div>
+                </div>
+            </a>
+            <a href="#" class="product-card">
+                <div class="product-image">
+                    <img src="travel-backpack.png" alt="Travel Backpack">
+                </div>
+                <div class="product-info">
+                    <h3>Travel Backpack</h3>
+                    <div class="subtitle">30L - 45L</div>
+                    <div class="price">$191.96 - $299.95</div>
+                </div>
+            </a>
+            <a href="#" class="product-card">
+                <div class="product-image">
+                    <img src="./Tech Pouch.png" alt="Tech Pouch">
+                </div>
+                <div class="product-info">
+                    <h3>Tech Pouch</h3>
+                    <div class="price">$39.96 - $59.95</div>
+                    <div class="colors">IN 9 COLORS</div>
+                </div>
+            </a>
+            <a href="#" class="product-card">
+                <div class="product-image">
+                    <img src="./packing-cube.png" alt="Packing Cube">
+                </div>
+                <div class="product-info">
+                    <h3>Packing Cube</h3>
+                    <div class="price">$23.96 - $49.95</div>
+                    <div class="colors">IN 6 COLORS</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Explore Products -->
+    <section class="section">
+        <h2>Explore Our Products</h2>
+        <div class="explore-grid">
+            <a href="#travel" class="explore-card">
+                <img src="travel.jpg" alt="Travel">
+                <div class="explore-overlay">
+                    <h3>Travel</h3>
+                    <div class="arrow">→</div>
+                </div>
+            </a>
+            <a href="#packing" class="explore-card">
+                <img src="packing-cubes.jpg" alt="Packing Cubes">
+                <div class="explore-overlay">
+                    <h3>Packing Cubes</h3>
+                    <div class="arrow">→</div>
+                </div>
+            </a>
+            <a href="#outdoor" class="explore-card">
+                <img src="outdoor.jpg" alt="Outdoor">
+                <div class="explore-overlay">
+                    <h3>Outdoor</h3>
+                    <div class="arrow">→</div>
+                </div>
+            </a>
+            <a href="#phone" class="explore-card">
+                <img src="phone-cases.jpg" alt="Phone Cases">
+                <div class="explore-overlay">
+                    <h3>Phone Cases</h3>
+                    <div class="arrow">→</div>
+                </div>
+            </a>
+            <a href="#motorcycle" class="explore-card">
+                <img src="motorcycle.jpg" alt="Motorcycle">
+                <div class="explore-overlay">
+                    <h3>Motorcycle</h3>
+                    <div class="arrow">→</div>
+                </div>
+            </a>
+            <a href="#charging" class="explore-card">
+                <img src="charging.jpg" alt="Charging">
+                <div class="explore-overlay">
+                    <h3>Charging</h3>
+                    <div class="arrow">→</div>
+                </div>
+            </a>
+            <a href="#straps" class="explore-card">
+                <img src="straps.jpg" alt="Straps">
+                <div class="explore-overlay">
+                    <h3>Straps</h3>
+                    <div class="arrow">→</div>
+                </div>
+            </a>
+            <a href="#clips" class="explore-card">
+                <img src="clips.jpg" alt="Clips">
+                <div class="explore-overlay">
+                    <h3>Clips</h3>
+                    <div class="arrow">→</div>
+                </div>
+            </a>
+            <a href="#tripods" class="explore-card">
+                <img src="tripods.jpg" alt="Tripods">
+                <div class="explore-overlay">
+                    <h3>Tripods</h3>
+                    <div class="arrow">→</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="new-arrivals">
+        <div class="new-arrivals-content">
+            <h2>YOUR NEXT<br>ESSENTIAL JUST<br>DROPPED</h2>
+            <p>Discover new arrivals to inspire your next adventure.</p>
+            <a href="#new" class="btn btn-primary">SHOP NEW ARRIVALS →</a>
+        </div>
+        <div class="new-arrivals-image">
+            <img src="new-arrivals.webp" alt="New Arrivals">
+        </div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section class="coming-soon">
+        <div class="coming-soon-image">
+            <img src="phone-straps.webp" alt="Phone Straps">
+        </div>
+        <div class="coming-soon-content">
+            <div class="tag">COMING SOON</div>
+            <h2>Don't Strap In Just Yet</h2>
+            <p>A family of phone straps that are as intuitive as they are durable, powered by our new no-twist Micro-Anchor™ system.</p>
+            <a href="#notify" class="btn btn-primary">BE THE FIRST TO KNOW</a>
+        </div>
+    </section>
+
+    <!-- Company Values -->
+    <section class="company-values">
+        <h2>Radical Company, Radical Products</h2>
+        <div class="values-grid">
+            <a href="#mission" class="value-card">
+                <img src="our-mission.jpg" alt="Our Mission">
+                <div class="explore-overlay">
+                    <h3>Our Mission</h3>
+                    <div class="arrow">→</div>
+                </div>
+            </a>
+            <a href="#impact" class="value-card">
+                <img src="impact-report.jpg" alt="Impact Report">
+                <div class="explore-overlay">
+                    <h3>Impact Report</h3>
+                    <div class="arrow">→</div>
+                </div>
+            </a>
+            <a href="#films" class="value-card">
+                <img src="films.jpg" alt="Films">
+                <div class="explore-overlay">
+                    <h3>Films</h3>
+                    <div class="arrow">→</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Featured -->
+    <section class="featured">
+        <div class="featured-image">
+            <img src="factory.webp" alt="Factory">
+        </div>
+        <div class="featured-content">
+            <div class="tag">FEATURED</div>
+            <h2>At the Expense<br>of Nobody</h2>
+            <p>All of our bags are Fair Trade certified. Learn how we inspired our new Philippines factory to be the first Fair Trade factory in the country.</p>
+            <a href="#watch" class="btn btn-primary">WATCH THE FILM ▶</a>
+        </div>
+    </section>
+
+    <!-- Retailer -->
+    <section class="retailer-section">
+        <div class="retailer-content">
+            <h2>Find a Retailer</h2>
+            <p>What's it like to use the most thoughtfully designed gear in the world? See for yourself.</p>
+            <input type="text" placeholder="Enter your location">
+        </div>
+        <div class="retailer-image">
+            <img src="store.webp" alt="Store">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>SUPPORT</h3>
+                <ul>
+                    <li><a href="#support-center">Support Center</a></li>
+                    <li><a href="#track">Track Your Order</a></li>
+                    <li><a href="#returns">Returns</a></li>
+                    <li><a href="#shipping">Shipping</a></li>
+                    <li><a href="#warranty">Lifetime Warranty</a></li>
+                    <li><a href="#registration">Product Registration</a></li>
+                    <li><a href="#corporate">Corporate Sales</a></li>
+                    <li><a href="#expert">PD Expert Program</a></li>
+                    <li><a href="#collaboration">Collaboration</a></li>
+                    <li><a href="#military">Military/Students</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>ABOUT</h3>
+                <ul>
+                    <li><a href="#mission">Our Mission</a></li>
+                    <li><a href="#impact">Impact Report</a></li>
+                    <li><a href="#action">Taking Action</a></li>
+                    <li><a href="#retailer">Find a Retailer</a></li>
+                    <li><a href="#field">Field Notes</a></li>
+                    <li><a href="#ambassadors">Ambassadors</a></li>
+                    <li><a href="#films">Films</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#findyourpeak">#FindYourPeak</a></li>
+                    <li><a href="#dealer">Become a Dealer</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>SHOP</h3>
+                <ul>
+                    <li><a href="#bags">Bags</a></li>
+                    <li><a href="#accessories">Bag Accessories</a></li>
+                    <li><a href="#mobile">Mobile</a></li>
+                    <li><a href="#camera">Camera Gear</a></li>
+                    <li><a href="#tripods">Tripods</a></li>
+                    <li><a href="#sale">Sale</a></li>
+                    <li><a href="#gift">Gift Cards</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-newsletter">
+                <h3>VISIT A PD STORE</h3>
+                <div class="store-links">
+                    <a href="#sf">SF</a> | 
+                    <a href="#la">LA</a> | 
+                    <a href="#ny">NY</a> | 
+                    <a href="#tk">TK</a> | 
+                    <a href="#cz">CZ</a>
+                </div>
+                <h3 style="margin-top: 30px;">SUBSCRIBE TO NEWSLETTER</h3>
+                <p>Be the first to know about new products, events, and sales.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your email">
+                    <button type="submit">SIGN ME UP</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="social-links">
+                <a href="#instagram" aria-label="Instagram">📷</a>
+                <a href="#facebook" aria-label="Facebook">f</a>
+                <a href="#youtube" aria-label="YouTube">▶</a>
+                <a href="#tiktok" aria-label="TikTok">♪</a>
+                <a href="#reddit" aria-label="Reddit">⚪</a>
+            </div>
+            
+            <div class="footer-legal">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Use</a>
+                <a href="#accessibility">Accessibility</a>
+            </div>
+
+            <div>
+                <a href="#" class="logo">▲ Peak Design</a>
+            </div>
+
+            <div style="text-align: center;">
+                © 2025 Peak Design | All Rights Reserved
+            </div>
+
+            <div class="footer-certifications">
+                <img src="climate-neutral.avif" alt="Climate Neutral Certified">
+                <img src="bcorp.avif" alt="B Corporation">
+                <img src="member.avif" alt="1% for the Planet">
+                <img src="planet-member.avif" alt="For the Planet">
+            </div>
+
+            <div class="currency-selector">
+                Global (USD $)
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
